@@ -1,0 +1,225 @@
+
+/* ===== PROFESSIONAL VIBES — ENHANCED HOVER & MICRO-INTERACTIONS ===== */
+
+/* ── Service cards ── */
+.svc-card {
+  position: relative; overflow: hidden; cursor: default;
+  transition: all 0.38s cubic-bezier(0.34,1.56,0.64,1);
+}
+.svc-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,168,107,0.06), rgba(0,201,127,0.10));
+  opacity: 0; transition: opacity 0.38s;
+}
+.svc-card:hover { box-shadow: 0 24px 64px rgba(0,168,107,0.18), 0 0 0 1.5px rgba(0,168,107,0.25); }
+.svc-card:hover::after { opacity: 1; }
+.svc-card:hover .svc-icon { background: #00a86b; transform: scale(1.12) rotate(-6deg); }
+.svc-icon { transition: all 0.38s cubic-bezier(0.34,1.56,0.64,1); }
+
+/* ── Why-item hover ── */
+.why-item { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
+.why-item:hover { transform: translateX(8px); border-color: #00a86b !important; box-shadow: 0 8px 32px rgba(0,168,107,0.14) !important; }
+.why-item .wi-icon { transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+.why-item:hover .wi-icon { transform: scale(1.1) rotate(-5deg); }
+
+/* ── Stat card hover ── */
+.stat-card {
+  position: relative; overflow: hidden;
+  transition: all 0.38s cubic-bezier(0.34,1.56,0.64,1); cursor: default;
+}
+.stat-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,168,107,0.06), transparent);
+  opacity: 0; transition: opacity 0.35s;
+}
+.stat-card:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 20px 60px rgba(0,168,107,0.16) !important; }
+.stat-card:hover::before { opacity: 1; }
+
+/* ── Client chip hover ── */
+.client-chip { transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); cursor: default; }
+.client-chip:hover { background: #0a1f44; color: white; transform: translateY(-4px) scale(1.05); box-shadow: 0 10px 28px rgba(10,31,68,0.22); }
+
+/* ── Button premium hover ── */
+.btn { position: relative; overflow: hidden; }
+.btn::before {
+  content: ''; position: absolute;
+  top: 50%; left: 50%; width: 0; height: 0;
+  background: rgba(255,255,255,0.18); border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+.btn:active::before { width: 300px; height: 300px; opacity: 0; }
+
+/* ── Company cards ── */
+.company-card { transition: all 0.38s cubic-bezier(0.4,0,0.2,1); }
+.company-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(10,31,68,0.18) !important; }
+
+/* ── Value cards ── */
+.value-card { transition: all 0.38s cubic-bezier(0.34,1.56,0.64,1); }
+.value-card:hover { transform: translateY(-7px); }
+.value-icon { transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); display: block; }
+.value-card:hover .value-icon { transform: scale(1.15) rotate(-5deg); }
+
+/* ── Client cards ── */
+.client-card { transition: all 0.38s cubic-bezier(0.4,0,0.2,1); }
+.client-card:hover { transform: translateY(-7px); }
+.client-icon { transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); display: block; }
+.client-card:hover .client-icon { transform: scale(1.15); }
+
+/* ── Info cards (contact) ── */
+.info-card { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
+.info-card:hover { transform: translateX(6px); border-color: #00a86b; box-shadow: 0 12px 40px rgba(0,168,107,0.12) !important; }
+
+/* ── Achievement cards ── */
+.ach-card { transition: all 0.38s cubic-bezier(0.4,0,0.2,1); }
+.ach-card:hover { transform: translateY(-6px); }
+
+/* ── Comp cards ── */
+.comp-card { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
+.comp-card:hover { transform: translateX(8px); }
+
+/* ── TL timeline cards ── */
+.tl-card { transition: all 0.38s cubic-bezier(0.4,0,0.2,1); }
+
+/* ── Hero badge shimmer ── */
+.hero-badge .dot {
+  width: 8px; height: 8px;
+  background: #00a86b; border-radius: 50%;
+  animation: pulse-green 2s infinite;
+}
+
+/* ── Nav links smooth underline ── */
+.nav-links a { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+
+/* ── Award banner btn ── */
+.award-banner .btn { transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+.award-banner .btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 36px rgba(0,0,0,0.2); }
+
+/* ── Footer links ── */
+.footer-col ul li a { position: relative; display: inline-block; transition: all 0.3s; }
+.footer-col ul li a:hover { padding-left: 10px; }
+
+/* ── Stat big hover ── */
+.stat-big { transition: all 0.35s; }
+.stat-big:hover { background: rgba(0,168,107,0.14) !important; transform: scale(1.02); }
+
+/* ── Service stat hover ── */
+.svc-stat { transition: all 0.38s cubic-bezier(0.34,1.56,0.64,1); }
+.svc-stat:hover { transform: translateY(-5px); }
+
+/* ── WC card hover ── */
+.wc-card { transition: all 0.38s cubic-bezier(0.34,1.56,0.64,1); }
+.wc-card:hover { transform: translateY(-7px); }
+.wc-icon { transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+.wc-card:hover .wc-icon { transform: scale(1.15) rotate(-5deg); }
+
+/* ── Submit button ── */
+.submit-btn { transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+.submit-btn:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 12px 36px rgba(0,168,107,0.45) !important; }
+
+/* ===== GLOBAL PROFESSIONAL VIBES ===== */
+
+/* Subtle noise/texture overlay on dark sections */
+.bg-navy::after,
+.journey-section::after,
+.stats-section::after,
+.how-section::after,
+.achievement-strip::after,
+.cta-section::after {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+}
+
+/* Section divider gradient lines */
+.divider {
+  position: relative; overflow: hidden;
+}
+.divider::after {
+  content: '';
+  position: absolute; top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: shimmerLine 2.5s ease-in-out infinite;
+}
+@keyframes shimmerLine {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* ===== FLOATING PARTICLES — DARK SECTIONS ===== */
+@keyframes floatParticle {
+  0%   { transform: translateY(0px) translateX(0px); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-80px) translateX(20px); opacity: 0; }
+}
+
+/* ===== SCROLL PROGRESS BAR ===== */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 3px; z-index: 9999;
+  background: linear-gradient(90deg, #00a86b, #00c97f, #007a4d);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.1s linear;
+  box-shadow: 0 0 8px rgba(0,168,107,0.5);
+}
+
+/* ===== BACK TO TOP ===== */
+#back-top {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, #00a86b, #007a4d);
+  color: white; border: none; border-radius: 14px;
+  font-size: 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 24px rgba(0,168,107,0.4);
+  transform: translateY(80px); opacity: 0;
+  transition: all 0.38s cubic-bezier(0.34,1.56,0.64,1);
+}
+#back-top.visible { transform: translateY(0); opacity: 1; }
+#back-top:hover { transform: translateY(-5px) scale(1.08); box-shadow: 0 12px 36px rgba(0,168,107,0.55); }
+
+/* ===== SECTION TRANSITIONS ===== */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.72s cubic-bezier(0.4,0,0.2,1), transform 0.72s cubic-bezier(0.4,0,0.2,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-32px); transition: opacity 0.72s cubic-bezier(0.4,0,0.2,1), transform 0.72s cubic-bezier(0.4,0,0.2,1); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(32px); transition: opacity 0.72s cubic-bezier(0.4,0,0.2,1), transform 0.72s cubic-bezier(0.4,0,0.2,1); }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* Stagger delays */
+.reveal:nth-child(1) { transition-delay: 0.05s; }
+.reveal:nth-child(2) { transition-delay: 0.15s; }
+.reveal:nth-child(3) { transition-delay: 0.25s; }
+.reveal:nth-child(4) { transition-delay: 0.35s; }
+.reveal:nth-child(5) { transition-delay: 0.45s; }
+.reveal:nth-child(6) { transition-delay: 0.55s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .road-scene { height: 100px; }
+  .vehicle { font-size: 22px !important; bottom: 8px; }
+  .cloud { display: none; }
+  .hero { padding-bottom: 120px !important; }
+  .hero-stats { gap: 16px; }
+  .hero-divider { height: 35px; }
+  .hero-stat .num { font-size: 22px; }
+  .hero-btns { flex-direction: column; align-items: flex-start; }
+  .hero-btns .btn { width: 100%; justify-content: center; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .cta-btns .btn { width: 100%; max-width: 320px; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .hero-badge { font-size: 10px; padding: 5px 12px; }
+  .hero h1 { font-size: 28px; }
+  .hero-desc { font-size: 15px; }
+  .stat-card { padding: 20px 16px; }
+  .stat-number { font-size: 28px; }
+}

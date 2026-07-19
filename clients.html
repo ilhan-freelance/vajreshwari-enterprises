@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Clients & Coverage | Vajreshwari Enterprises</title>
+<meta name="description" content="Vajreshwari Enterprises serves GAIL, HPCL, BPCL, ONGC, ISRO, NPCIL and more. PAN India coverage across 28+ states."/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="animations.css"/>
+<style>
+.clients-hero{background:linear-gradient(135deg,#060f24 0%,#0a1f44 60%,#1a3366 100%);padding:120px 5% 80px;position:relative;overflow:hidden;}
+.clients-hero::before{content:'';position:absolute;inset:0;background:url('images/india_coverage_map.png') right center/contain no-repeat;opacity:0.1;}
+.clients-hero-content{position:relative;z-index:1;max-width:700px;}
+.clients-hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,58px);font-weight:800;color:white;line-height:1.1;margin-bottom:16px;}
+.clients-hero h1 span{color:#00c97f;}
+
+/* CLIENT CATEGORIES */
+.client-cats{padding:90px 5%;}
+.cat-tabs{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap;}
+.cat-tab{padding:10px 22px;border-radius:50px;border:2px solid #e2e8f0;font-size:14px;font-weight:600;color:#475569;cursor:pointer;transition:all 0.3s;background:white;}
+.cat-tab.active,.cat-tab:hover{background:#0a1f44;color:white;border-color:#0a1f44;}
+.clients-big-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.client-card{background:white;border-radius:18px;border:1px solid #e2e8f0;padding:32px 28px;transition:all 0.3s;box-shadow:0 4px 16px rgba(10,31,68,0.06);}
+.client-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(10,31,68,0.14);border-color:rgba(0,168,107,0.3);}
+.client-card .client-sector{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#00a86b;margin-bottom:10px;}
+.client-card .client-name{font-size:20px;font-weight:800;color:#0a1f44;margin-bottom:8px;}
+.client-card .client-desc{font-size:13px;color:#475569;line-height:1.6;}
+.client-icon{font-size:36px;margin-bottom:16px;}
+
+/* INDIA MAP SECTION */
+.coverage-section{padding:90px 5%;background:#f8fafc;}
+.coverage-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.map-container{position:relative;background:white;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(10,31,68,0.12);border:1px solid #e2e8f0;}
+.map-container img{width:100%;display:block;}
+.map-label{position:absolute;top:16px;left:16px;background:rgba(10,31,68,0.9);color:white;font-size:12px;font-weight:700;padding:6px 14px;border-radius:50px;letter-spacing:1px;}
+.states-panel{display:flex;flex-direction:column;gap:16px;}
+.state-region{background:white;border-radius:14px;border:1px solid #e2e8f0;overflow:hidden;}
+.region-header{background:linear-gradient(135deg,#0a1f44,#1a3366);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
+.region-header h4{color:white;font-size:14px;font-weight:700;}
+.region-header .cnt{background:#00a86b;color:white;font-size:11px;font-weight:700;padding:2px 10px;border-radius:50px;}
+.region-states{padding:14px 20px;display:flex;flex-wrap:wrap;gap:6px;}
+.state-tag{background:#f1f5f9;color:#334155;font-size:12px;font-weight:500;padding:4px 10px;border-radius:50px;}
+
+/* ACHIEVEMENT STRIP */
+.achievement-strip{background:linear-gradient(135deg,#060f24,#0a1f44);padding:80px 5%;}
+.ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.ach-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:36px 28px;text-align:center;transition:all 0.3s;}
+.ach-card:hover{background:rgba(0,168,107,0.1);border-color:rgba(0,168,107,0.3);}
+.ach-icon{font-size:48px;margin-bottom:16px;}
+.ach-card h3{color:white;font-size:18px;font-weight:700;margin-bottom:10px;}
+.ach-card p{color:rgba(255,255,255,0.65);font-size:14px;line-height:1.65;}
+.ach-num{font-size:clamp(36px,5vw,54px);font-weight:900;color:#00c97f;line-height:1;margin-bottom:6px;}
+
+/* WORK ORDER CHART */
+.chart-section{padding:90px 5%;background:#f8fafc;}
+.chart-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+.chart-wrap{background:white;border-radius:20px;padding:36px;box-shadow:0 8px 30px rgba(10,31,68,0.08);border:1px solid #e2e8f0;}
+.chart-wrap h3{font-size:18px;font-weight:700;color:#0a1f44;margin-bottom:6px;}
+.chart-wrap .sub{font-size:13px;color:#475569;margin-bottom:24px;}
+.bar-chart{display:flex;flex-direction:column;gap:12px;}
+.bar-row{display:flex;flex-direction:column;gap:4px;}
+.bar-label{font-size:12px;font-weight:600;color:#475569;display:flex;justify-content:space-between;}
+.bar-label span{color:#00a86b;font-weight:700;}
+.bar-track{background:#f1f5f9;border-radius:50px;height:10px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,#00a86b,#00c97f);transition:width 1.5s ease;}
+
+@media(max-width:900px){
+  .clients-big-grid,.coverage-layout,.ach-grid,.chart-layout{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .clients-big-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div id="scroll-progress"></div><button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to Top">&#8679;</button>
+<div class="page-wrapper">
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="images/ve_logo.png" alt="VE Logo" style="height:42px;width:42px;object-fit:contain;border-radius:6px;"/>
+    <div class="logo-text"><span class="logo-name">Vajreshwari Enterprises</span><span class="logo-sub">Serving Since 2010</span></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="clients.html" class="active">Clients &amp; Coverage</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="this.closest('nav').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="clients-hero">
+  <div class="clients-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Clients &amp; Coverage</span></div>
+    <div class="section-tag">Our Reach</div>
+    <h1>Trusted by <span>India's Best.</span><br/>Present Everywhere.</h1>
+    <p>From petroleum giants to nuclear agencies — our clients represent the most prestigious organizations in India. Broad client base supported across 28+ states and union territories.</p>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="achievement-strip">
+  <div class="section-header center">
+    <div class="section-tag" style="border-color:rgba(0,168,107,0.4);">Track Record</div>
+    <h2 class="section-title" style="color:white;">Our <span>Proven</span> Performance</h2>
+    <div class="divider center"></div>
+  </div>
+  <div class="ach-grid">
+    <div class="ach-card">
+      <div class="ach-icon">📋</div>
+      <div class="ach-num">400+</div>
+      <h3>Work Orders Awarded</h3>
+      <p>Over 400 work orders awarded across both companies since inception, with 350+ successfully completed till March 2024.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🚗</div>
+      <div class="ach-num">2000+</div>
+      <h3>Vehicles Purchased</h3>
+      <p>Over 2,000 vehicles purchased throughout our operational history. Currently maintaining an active fleet of 600+ vehicles.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">💰</div>
+      <div class="ach-num">₹481Cr</div>
+      <h3>Combined Work Order Value</h3>
+      <p>₹332.5 Cr from M/s RC Gupta + ₹148.5 Cr from Vajreshwari Enterprises — a combined legacy of <strong style="color:#00c97f;">₹481 Crore+.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT CARDS -->
+<section class="client-cats">
+  <div class="section-header center">
+    <div class="section-tag">Our Esteemed Clients</div>
+    <h2 class="section-title">Organizations That <span>Trust Us</span></h2>
+    <div class="divider center"></div>
+    <p class="section-subtitle">Serving India's most prestigious petroleum, government, and public sector organizations.</p>
+  </div>
+  <div class="clients-big-grid">
+    <div class="client-card">
+      <div class="client-icon">🛢️</div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">GAIL India Ltd</div>
+      <p class="client-desc">India's largest natural gas company. We provide transportation and manpower solutions for their extensive operations across India.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">⛽</div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">GAIL Gas Ltd</div>
+      <p class="client-desc">City gas distribution subsidiary of GAIL. Vehicles and drivers deployed for operational logistics and last-mile distribution.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🌿</div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">Green Gas Ltd</div>
+      <p class="client-desc">CNG and piped natural gas distribution network. We support their fleet and manpower requirements across multiple cities.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🏭</div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">HPCL</div>
+      <p class="client-desc">Hindustan Petroleum Corporation Limited. Providing specialized transport and emergency vehicle support for their facilities.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🏭</div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">BPCL</div>
+      <p class="client-desc">Bharat Petroleum Corporation Limited. End-to-end transportation solutions for their corporate and operational requirements.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">⚙️</div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">ONGC</div>
+      <p class="client-desc">Oil and Natural Gas Corporation. Supplying reliable vehicles and trained manpower for onshore operations and exploration sites.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🔴</div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">IOCL</div>
+      <p class="client-desc">Indian Oil Corporation Limited — India's largest commercial enterprise. Trusted transportation partner for multiple state operations.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🔥</div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">Torrent Gas Pvt Ltd</div>
+      <p class="client-desc">Leading private city gas distribution company. Fleet and driver deployment for their distribution network across states.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🌐</div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">Indraprastha Gas Grid Ltd</div>
+      <p class="client-desc">Major CNG and PNG gas distribution network. Transportation and operational support for their Delhi-NCR and interstate operations.</p>
+    </div>
+    <div class="client-card" style="border-color:rgba(230,57,70,0.2);background:rgba(230,57,70,0.02);">
+      <div class="client-icon">🚀</div>
+      <div class="client-sector" style="color:#e63946;">Central Government</div>
+      <div class="client-name">ISRO</div>
+      <p class="client-desc"><span class="highlight-red">India's premier space agency.</span> Providing specialized transportation solutions including sensitive cargo movement for India's space research missions.</p>
+    </div>
+    <div class="client-card" style="border-color:rgba(230,57,70,0.2);background:rgba(230,57,70,0.02);">
+      <div class="client-icon">⚛️</div>
+      <div class="client-sector" style="color:#e63946;">Central Government</div>
+      <div class="client-name">NPCIL</div>
+      <p class="client-desc"><span class="highlight-red">Nuclear Power Corporation of India.</span> Trusted with sensitive nuclear waste management transportation — the highest compliance standard in India.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-icon">🏛️</div>
+      <div class="client-sector">State Government</div>
+      <div class="client-name">Nagar Nigam &amp; UIT</div>
+      <p class="client-desc">State government urban development bodies. Supporting municipal transportation and manpower needs across Rajasthan and beyond.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage-section">
+  <div class="section-header center">
+    <div class="section-tag">Pan India Presence</div>
+    <h2 class="section-title">Our <span>Coverage</span> Across India</h2>
+    <div class="divider center"></div>
+    <p class="section-subtitle">A broad client base supported across multiple Indian states and union territories — from the northern Himalayas to the southern coast.</p>
+  </div>
+  <div class="coverage-layout">
+    <div class="map-container">
+      <img src="images/india_coverage_map.png" alt="India Coverage Map — Vajreshwari Enterprises"/>
+      <div class="map-label">28+ States Covered</div>
+    </div>
+    <div class="states-panel">
+      <div class="state-region">
+        <div class="region-header"><h4>🏔️ North India</h4><span class="cnt">6 States</span></div>
+        <div class="region-states">
+          <span class="state-tag">Jammu &amp; Kashmir</span>
+          <span class="state-tag">Himachal Pradesh</span>
+          <span class="state-tag">Punjab</span>
+          <span class="state-tag">Haryana</span>
+          <span class="state-tag">Delhi</span>
+          <span class="state-tag">Uttarakhand</span>
+        </div>
+      </div>
+      <div class="state-region">
+        <div class="region-header"><h4>🏜️ West &amp; Central India</h4><span class="cnt">5 States</span></div>
+        <div class="region-states">
+          <span class="state-tag">Rajasthan</span>
+          <span class="state-tag">Gujarat</span>
+          <span class="state-tag">Madhya Pradesh</span>
+          <span class="state-tag">Maharashtra</span>
+          <span class="state-tag">Goa</span>
+        </div>
+      </div>
+      <div class="state-region">
+        <div class="region-header"><h4>🌾 East &amp; Northeast India</h4><span class="cnt">9 States</span></div>
+        <div class="region-states">
+          <span class="state-tag">West Bengal</span>
+          <span class="state-tag">Bihar</span>
+          <span class="state-tag">Jharkhand</span>
+          <span class="state-tag">Odisha</span>
+          <span class="state-tag">Assam</span>
+          <span class="state-tag">Sikkim</span>
+          <span class="state-tag">Meghalaya</span>
+          <span class="state-tag">Manipur</span>
+          <span class="state-tag">Mizoram</span>
+        </div>
+      </div>
+      <div class="state-region">
+        <div class="region-header"><h4>🌴 South India</h4><span class="cnt">6 States/UTs</span></div>
+        <div class="region-states">
+          <span class="state-tag">Telangana</span>
+          <span class="state-tag">Andhra Pradesh</span>
+          <span class="state-tag">Karnataka</span>
+          <span class="state-tag">Kerala</span>
+          <span class="state-tag">Tamil Nadu</span>
+          <span class="state-tag">Puducherry</span>
+        </div>
+      </div>
+      <div class="state-region">
+        <div class="region-header"><h4>📦 Other Territories</h4><span class="cnt">4 UTs</span></div>
+        <div class="region-states">
+          <span class="state-tag">Uttar Pradesh</span>
+          <span class="state-tag">Chhattisgarh</span>
+          <span class="state-tag">Daman &amp; Diu</span>
+          <span class="state-tag">Dadra &amp; Nagar Haveli</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK ORDER CHART -->
+<section class="chart-section">
+  <div class="section-header center">
+    <div class="section-tag">Growth Story</div>
+    <h2 class="section-title">Work Order Value <span>Progression</span></h2>
+    <div class="divider center"></div>
+  </div>
+  <div class="chart-layout">
+    <div class="chart-wrap">
+      <h3>M/s RC Gupta</h3>
+      <div class="sub">Work Order Value in Crores (₹) — Since 2002</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label"><span>2000–2005</span><span>₹0.576 Cr</span></div><div class="bar-track"><div class="bar-fill" style="width:1%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>2005–2010</span><span>₹11.59 Cr</span></div><div class="bar-track"><div class="bar-fill" style="width:5%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>2011–2015</span><span>₹42.76 Cr</span></div><div class="bar-track"><div class="bar-fill" style="width:18%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>2016–2020</span><span>₹214.94 Cr</span></div><div class="bar-track"><div class="bar-fill" style="width:65%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>2021–2025 (Est.)</span><span>₹332.5 Cr</span></div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div></div>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <h3>Vajreshwari Enterprises</h3>
+      <div class="sub">Work Order Value in Crores (₹) — Since 2010</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label"><span>2010–2012</span><span>₹0.621 Cr</span></div><div class="bar-track"><div class="bar-fill" style="width:1%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>2013–2015</span><span>₹11.59 Cr</span></div><div class="bar-track"><div class="bar-fill" style="width:8%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>2016–2018</span><span>₹38.11 Cr</span></div><div class="bar-track"><div class="bar-fill" style="width:26%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>2019–2021</span><span>₹61.53 Cr</span></div><div class="bar-track"><div class="bar-fill" style="width:42%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>2022–2024</span><span>₹148.5 Cr</span></div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="nav-logo" style="margin-bottom:16px;"><img src="images/ve_logo.png" alt="VE Logo" style="height:42px;width:42px;object-fit:contain;border-radius:6px;"/><div class="logo-text"><span class="logo-name" style="color:white;font-size:17px;">Vajreshwari Enterprises</span><span class="logo-sub">Serving Since 2010</span></div></div><p>Trusted by GAIL, HPCL, ONGC, ISRO, NPCIL and 15+ more prestigious organizations across India.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="clients.html">Clients &amp; Coverage</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Passenger Transport</a></li><li><a href="services.html">Emergency Vehicles</a></li><li><a href="services.html">Manpower Supply</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span class="icon">📞</span><span>+91 94143 09990</span></div><div class="footer-contact-item"><span class="icon">✉</span><span>Vajreshwari.enterprise@gmail.com</span></div></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2025 Vajreshwari Enterprises. All rights reserved.</span><span>Sister Concern: M/s RC Gupta (Est. 2002) &nbsp;|&nbsp; Krady Solutions Pvt Ltd</span></div>
+</footer>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Our Services | Vajreshwari Enterprises</title>
+<meta name="description" content="Vajreshwari Enterprises offers passenger transportation, emergency vehicles, heavy-duty logistics and manpower supply services across India."/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="animations.css"/>
+<style>
+.svc-hero{background:linear-gradient(135deg,#060f24 0%,#0a1f44 60%,#1a3366 100%);padding:120px 5% 80px;position:relative;overflow:hidden;}
+.svc-hero::before{content:'';position:absolute;inset:0;background:url('images/services_fleet.png') center/cover no-repeat;opacity:0.12;}
+.svc-hero-content{position:relative;z-index:1;max-width:700px;}
+.svc-hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,58px);font-weight:800;color:white;line-height:1.1;margin-bottom:16px;}
+.svc-hero h1 span{color:#00c97f;}
+.svc-hero p{font-size:17px;color:rgba(255,255,255,0.72);max-width:550px;line-height:1.75;}
+
+/* SERVICE CATEGORIES */
+.svc-main{padding:90px 5%;}
+.svc-category{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:80px;padding-bottom:80px;border-bottom:1px solid #e2e8f0;}
+.svc-category:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.svc-category.reverse{direction:rtl;}
+.svc-category.reverse>*{direction:ltr;}
+.svc-cat-visual{border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#0a1f44,#1a3366);padding:40px;display:flex;flex-direction:column;gap:16px;box-shadow:0 20px 60px rgba(10,31,68,0.18);}
+.svc-cat-icon{font-size:56px;margin-bottom:8px;}
+.svc-cat-visual h3{color:white;font-family:'Playfair Display',serif;font-size:26px;font-weight:700;}
+.svc-cat-visual p{color:rgba(255,255,255,0.7);font-size:15px;line-height:1.7;}
+.vehicle-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.vchip{background:rgba(0,168,107,0.2);border:1px solid rgba(0,168,107,0.3);color:#00c97f;font-size:12px;font-weight:600;padding:5px 12px;border-radius:50px;}
+.svc-cat-info h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,38px);font-weight:800;color:#0a1f44;line-height:1.2;margin-bottom:16px;}
+.svc-cat-info h2 span{color:#00a86b;}
+.svc-cat-info p{font-size:15px;color:#475569;line-height:1.75;margin-bottom:20px;}
+.svc-feature-list{list-style:none;margin:20px 0;}
+.svc-feature-list li{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:15px;color:#334155;}
+.svc-feature-list li::before{content:'▸';color:#00a86b;font-weight:700;flex-shrink:0;margin-top:1px;}
+.svc-badge-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+
+/* STATS STRIP */
+.svc-stats{background:#f8fafc;padding:70px 5%;}
+.svc-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.svc-stat{background:white;border-radius:16px;padding:32px 24px;text-align:center;border:1px solid #e2e8f0;box-shadow:0 4px 16px rgba(10,31,68,0.06);transition:all 0.3s;}
+.svc-stat:hover{transform:translateY(-4px);border-color:#00a86b;box-shadow:0 16px 50px rgba(0,168,107,0.12);}
+.svc-stat .big{font-size:clamp(32px,4vw,48px);font-weight:900;color:#0a1f44;line-height:1;}
+.svc-stat .big em{color:#00a86b;font-style:normal;}
+.svc-stat .sm{font-size:13px;color:#475569;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;margin-top:8px;}
+
+/* HOW IT WORKS */
+.how-section{padding:90px 5%;background:linear-gradient(135deg,#060f24,#0a1f44);}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:10px;}
+.steps-grid::before{content:'';position:absolute;top:36px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,#00a86b,#007a4d);z-index:0;}
+.step{text-align:center;padding:0 16px;position:relative;z-index:1;}
+.step-num{width:72px;height:72px;background:linear-gradient(135deg,#00a86b,#007a4d);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;color:white;margin:0 auto 20px;box-shadow:0 8px 24px rgba(0,168,107,0.35);}
+.step h4{color:white;font-size:16px;font-weight:700;margin-bottom:8px;}
+.step p{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.6;}
+
+/* COMPLIANCE */
+.compliance-section{padding:80px 5%;background:#f8fafc;}
+.compliance-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+.compliance-cards{display:flex;flex-direction:column;gap:16px;}
+.comp-card{background:white;border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:18px;border:1px solid #e2e8f0;box-shadow:0 4px 16px rgba(10,31,68,0.05);transition:all 0.3s;}
+.comp-card:hover{border-color:#00a86b;transform:translateX(6px);}
+.comp-icon{width:48px;height:48px;background:rgba(0,168,107,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.comp-card h4{font-size:15px;font-weight:700;color:#0a1f44;margin-bottom:4px;}
+.comp-card p{font-size:13px;color:#475569;}
+
+@media(max-width:900px){
+  .svc-category,.svc-category.reverse{grid-template-columns:1fr;direction:ltr;}
+  .svc-stats-grid,.steps-grid{grid-template-columns:1fr 1fr;}
+  .steps-grid::before{display:none;}
+  .compliance-grid{grid-template-columns:1fr;}
+  .svc-hero{padding:100px 5% 60px;}
+}
+@media(max-width:768px){
+  .svc-cat-visual{padding:28px;}
+  .svc-cat-visual h3{font-size:22px;}
+  .svc-cat-info h2{font-size:clamp(24px,5vw,34px);}
+}
+@media(max-width:600px){
+  .svc-stats-grid{grid-template-columns:1fr 1fr;}
+  .steps-grid{grid-template-columns:1fr 1fr;}
+  .svc-badge-row{gap:8px;}
+  .svc-category{margin-bottom:50px;padding-bottom:50px;}
+}
+</style>
+</head>
+<body>
+<div id="scroll-progress"></div><button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to Top">&#8679;</button>
+<div class="page-wrapper">
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="images/ve_logo.png" alt="VE Logo" style="height:42px;width:42px;object-fit:contain;border-radius:6px;"/>
+    <div class="logo-text"><span class="logo-name">Vajreshwari Enterprises</span><span class="logo-sub">Serving Since 2010</span></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="clients.html">Clients &amp; Coverage</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="this.closest('nav').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="svc-hero">
+  <div class="svc-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Services</span></div>
+    <div class="section-tag">What We Do</div>
+    <h1>Comprehensive <span>Transportation</span> &amp; Logistics Solutions</h1>
+    <p>Three pillars of service — passenger transportation, emergency & heavy-duty vehicles, and professional manpower supply — all under one trusted brand.</p>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<section class="svc-stats">
+  <div class="section-header center">
+    <div class="section-tag">Our Scale</div>
+    <h2 class="section-title">Service Numbers That <span>Define Excellence</span></h2>
+    <div class="divider center"></div>
+  </div>
+  <div class="svc-stats-grid">
+    <div class="svc-stat"><div class="big"><em>600</em>+</div><div class="sm">Active Vehicles in Fleet</div></div>
+    <div class="svc-stat"><div class="big"><em>1200</em>+</div><div class="sm">Drivers Employed</div></div>
+    <div class="svc-stat"><div class="big"><em>400</em>+</div><div class="sm">Work Orders Executed</div></div>
+    <div class="svc-stat"><div class="big"><em>28</em>+</div><div class="sm">States Covered</div></div>
+  </div>
+</section>
+
+<!-- SERVICE CATEGORIES -->
+<section class="svc-main">
+
+  <!-- Passenger Transport -->
+  <div class="svc-category">
+    <div class="svc-cat-visual">
+      <div class="svc-cat-icon">🚐</div>
+      <h3>Passenger Transportation</h3>
+      <p>Premium fleet of vehicles for every corporate and institutional need — from daily commutes to VIP movements.</p>
+      <div class="vehicle-chips">
+        <span class="vchip">Tempo Traveller</span>
+        <span class="vchip">Mini Bus</span>
+        <span class="vchip">SUV / Luxury SUV</span>
+        <span class="vchip">MUV / Luxury MUV</span>
+        <span class="vchip">Sedan / Luxury Sedan</span>
+        <span class="vchip">Hatchback</span>
+        <span class="vchip">Bus</span>
+      </div>
+    </div>
+    <div class="svc-cat-info">
+      <div class="section-tag">Service Category A</div>
+      <h2>Passenger <span>Transportation Services</span></h2>
+      <div class="divider"></div>
+      <p>We provide a complete range of passenger vehicles for employee movement, corporate travel, project site commutes, VIP movement, and operational logistics — ensuring comfort, safety, and punctuality.</p>
+      <ul class="svc-feature-list">
+        <li>Employee shuttle services for IT parks, factories &amp; project sites</li>
+        <li>VIP and executive movement in luxury sedans and SUVs</li>
+        <li>Long-distance intercity corporate travel</li>
+        <li>Government official transport under contract</li>
+        <li>Event and conference transportation management</li>
+        <li>Fully licensed drivers with background verification</li>
+      </ul>
+      <div class="svc-badge-row">
+        <span class="badge badge-green">✓ GPS Tracked</span>
+        <span class="badge badge-green">✓ Insured Fleet</span>
+        <span class="badge badge-green">✓ 24/7 Available</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emergency Services -->
+  <div class="svc-category reverse">
+    <div class="svc-cat-visual" style="background:linear-gradient(135deg,#e63946,#b91c2c);">
+      <div class="svc-cat-icon">🚑</div>
+      <h3>Emergency &amp; Heavy-Duty Vehicles</h3>
+      <p>Specialized fleet for critical industrial and emergency operations — where reliability is non-negotiable.</p>
+      <div class="vehicle-chips">
+        <span class="vchip">Ambulance</span>
+        <span class="vchip">Fire Fighting Trucks</span>
+        <span class="vchip">Goods / Machinery</span>
+        <span class="vchip">Nuclear Waste Mgmt</span>
+        <span class="vchip">CNG Cascade MCV/LCV</span>
+      </div>
+    </div>
+    <div class="svc-cat-info">
+      <div class="section-tag">Service Category B</div>
+      <h2>Emergency <span>Services &amp; Heavy-Duty</span> Support</h2>
+      <div class="divider"></div>
+      <p>Deployment of specialized vehicles and emergency logistics for industrial plants, power stations, and critical infrastructure — including sensitive nuclear waste management and petroleum-sector operations.</p>
+      <ul class="svc-feature-list">
+        <li>Ambulance deployment for industrial plants and project sites</li>
+        <li>Fire fighting truck provision for petroleum &amp; gas facilities</li>
+        <li>Specialized nuclear waste transportation — fully compliant</li>
+        <li>CNG Cascade vehicles for gas distribution</li>
+        <li>Heavy machinery goods transport across PAN India</li>
+        <li>Round-the-clock emergency availability</li>
+      </ul>
+      <div class="svc-badge-row">
+        <span class="badge badge-red">⚠ Critical Operations</span>
+        <span class="badge badge-green">✓ ISRO Certified</span>
+        <span class="badge badge-green">✓ NPCIL Approved</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manpower -->
+  <div class="svc-category">
+    <div class="svc-cat-visual" style="background:linear-gradient(135deg,#007a4d,#00a86b);">
+      <div class="svc-cat-icon">👷</div>
+      <h3>Manpower Supply Services</h3>
+      <p>Trained, verified, and compliant workforce ready for industrial and institutional deployment across India.</p>
+      <div class="vehicle-chips">
+        <span class="vchip">Professional Drivers</span>
+        <span class="vchip">Fire Fighters</span>
+        <span class="vchip">ESI Enrolled</span>
+        <span class="vchip">EPF Enrolled</span>
+      </div>
+    </div>
+    <div class="svc-cat-info">
+      <div class="section-tag">Service Category C</div>
+      <h2>Professional <span>Manpower</span> Supply</h2>
+      <div class="divider"></div>
+      <p>We provide trained and skilled manpower for industrial, infrastructure, and institutional operations. All personnel are ESI and EPF enrolled — ensuring complete compliance and social security coverage.</p>
+      <ul class="svc-feature-list">
+        <li>1,200+ drivers employed with valid commercial licenses</li>
+        <li>Fire fighters trained for industrial emergency response</li>
+        <li>1,000+ employees enrolled in ESI and EPF schemes</li>
+        <li>Complete documentation and background verification</li>
+        <li>Deployment across PAN India within short notice</li>
+        <li>Ongoing training and performance monitoring</li>
+      </ul>
+      <div class="svc-badge-row">
+        <span class="badge badge-green">✓ ESI Covered</span>
+        <span class="badge badge-green">✓ EPF Enrolled</span>
+        <span class="badge badge-green">✓ Verified &amp; Trained</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-header center">
+    <div class="section-tag" style="border-color:rgba(0,168,107,0.4);">Our Process</div>
+    <h2 class="section-title" style="color:white;">How We <span>Deliver</span></h2>
+    <div class="divider center"></div>
+  </div>
+  <div class="steps-grid">
+    <div class="step"><div class="step-num">1</div><h4>Requirement Analysis</h4><p>We understand your exact vehicle, manpower, and timeline requirements.</p></div>
+    <div class="step"><div class="step-num">2</div><h4>Proposal &amp; Agreement</h4><p>A detailed proposal and service agreement drafted to your specifications.</p></div>
+    <div class="step"><div class="step-num">3</div><h4>Fleet &amp; Team Deployment</h4><p>Vehicles and manpower deployed on-time at your designated locations.</p></div>
+    <div class="step"><div class="step-num">4</div><h4>Ongoing Support</h4><p>24/7 support, regular reporting, and compliance documentation throughout.</p></div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="compliance-section">
+  <div class="compliance-grid">
+    <div>
+      <div class="section-tag">Compliance &amp; Standards</div>
+      <h2 class="section-title">Every Service — <span>Fully Compliant</span></h2>
+      <div class="divider"></div>
+      <p style="color:#475569;line-height:1.75;margin-bottom:10px;">We operate under the highest standards of regulatory compliance. From ESI/EPF for all employees to proper vehicle documentation, insurance, and government approvals — compliance is at the heart of everything we do.</p>
+      <p style="color:#475569;line-height:1.75;">Our track record with ISRO, NPCIL, ONGC, and petroleum majors is a testament to our ability to meet even the most stringent requirements.</p>
+      <div style="margin-top:28px;"><a href="contact.html" class="btn btn-primary">Request a Service Quote →</a></div>
+    </div>
+    <div class="compliance-cards">
+      <div class="comp-card"><div class="comp-icon">📋</div><div><h4>ESI Registration</h4><p>All employees covered under Employees' State Insurance for medical and social benefits.</p></div></div>
+      <div class="comp-card"><div class="comp-icon">🏦</div><div><h4>EPF Enrollment</h4><p>Provident fund contributions maintained for 1,000+ employees across all operations.</p></div></div>
+      <div class="comp-card"><div class="comp-icon">🚗</div><div><h4>Vehicle Insurance</h4><p>Complete insurance coverage for all vehicles in the active fleet.</p></div></div>
+      <div class="comp-card"><div class="comp-icon">🏅</div><div><h4>GEM Portal Certified</h4><p>Registered and award-winning vendor on the Government e-Marketplace portal.</p></div></div>
+      <div class="comp-card"><div class="comp-icon">🔐</div><div><h4>Background Verified</h4><p>Every driver and staff member undergoes thorough background verification.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="nav-logo" style="margin-bottom:16px;"><img src="images/ve_logo.png" alt="VE Logo" style="height:42px;width:42px;object-fit:contain;border-radius:6px;"/><div class="logo-text"><span class="logo-name" style="color:white;font-size:17px;">Vajreshwari Enterprises</span><span class="logo-sub">Serving Since 2010</span></div></div><p>End-to-end transportation and logistics solutions for government, PSU, and corporate clients across India.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="clients.html">Clients &amp; Coverage</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Passenger Transport</a></li><li><a href="services.html">Emergency Vehicles</a></li><li><a href="services.html">Heavy-Duty Logistics</a></li><li><a href="services.html">Manpower Supply</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span class="icon">📞</span><span>+91 94143 09990</span></div><div class="footer-contact-item"><span class="icon">✉</span><span>Vajreshwari.enterprise@gmail.com</span></div></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2025 Vajreshwari Enterprises. All rights reserved.</span><span>Sister Concern: M/s RC Gupta (Est. 2002) &nbsp;|&nbsp; Krady Solutions Pvt Ltd</span></div>
+</footer>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

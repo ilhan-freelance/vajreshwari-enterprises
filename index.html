@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Vajreshwari Enterprises | Professional Transportation & Logistics</title>
+<meta name="description" content="Vajreshwari Enterprises – India's trusted transportation, emergency vehicle & manpower services provider since 2010. 1200+ drivers, 600+ vehicles, PAN India coverage."/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="animations.css"/>
+<style>
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: #060f24;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding: 120px 5% 80px;
+}
+/* Layer 1: deep navy gradient overlay */
+.hero::after {
+  content:''; position:absolute; inset:0; z-index:0;
+  background: linear-gradient(135deg,
+    rgba(6,15,36,0.88) 0%,
+    rgba(10,31,68,0.72) 50%,
+    rgba(17,34,85,0.82) 100%);
+  pointer-events:none;
+}
+/* Layer 0: animated Ken Burns background image */
+.hero-bg {
+  position: absolute; inset: -10%; z-index: 0;
+  background: url('images/hero_banner.png') center/cover no-repeat;
+  /* Animation handled by JS below — no CSS animation */
+  will-change: transform, filter;
+  filter: blur(1px) brightness(0.55) saturate(1.2);
+  transform-origin: center center;
+}
+.hero-glow {
+  position: absolute; z-index: 0; pointer-events: none;
+  width: 700px; height: 700px;
+  background: radial-gradient(ellipse at center,
+    rgba(0,168,107,0.18) 0%,
+    rgba(0,168,107,0.06) 40%,
+    transparent 70%);
+  top: -10%; left: 20%;
+  will-change: transform;
+}
+.hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:2; width:100%; max-width:1300px; margin:auto; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(0,168,107,0.15); border:1px solid rgba(0,168,107,0.3); color:#00c97f; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:7px 18px; border-radius:50px; margin-bottom:20px; }
+.hero-badge .dot { width:8px;height:8px;background:#00a86b;border-radius:50%; animation:pulse-green 2s infinite; }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(34px,5vw,62px); font-weight:800; color:white; line-height:1.1; margin-bottom:22px; }
+.hero h1 span { color:#00c97f; }
+.hero-desc { font-size:17px; color:rgba(255,255,255,0.72); line-height:1.75; margin-bottom:36px; max-width:520px; }
+.hero-btns { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:50px; }
+.hero-stats { display:flex; gap:24px; flex-wrap:nowrap; align-items:center; }
+.hero-stat { text-align:center; flex-shrink:0; }
+.hero-stat .num { font-size:28px; font-weight:900; color:white; line-height:1; white-space:nowrap; }
+.hero-stat .num span { color:#00c97f; }
+.hero-stat .lbl { font-size:11px; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:1px; margin-top:4px; white-space:nowrap; }
+.hero-divider { width:1px; background:rgba(255,255,255,0.15); height:50px; align-self:center; flex-shrink:0; }
+.hero-img-wrap { position:relative; display:flex; align-items:center; justify-content:center; }
+.hero-img-wrap img { width:100%; max-width:550px; border-radius:20px; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+.hero-img-badge {
+  position:absolute; bottom:-20px; left:-20px;
+  background:white; border-radius:14px; padding:16px 22px;
+  display:flex; align-items:center; gap:12px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.2);
+}
+.hero-img-badge .badge-icon { width:44px;height:44px; background:linear-gradient(135deg,#00a86b,#007a4d); border-radius:10px; display:flex;align-items:center;justify-content:center; font-size:22px; }
+.hero-img-badge .badge-text strong { display:block; font-size:18px; font-weight:900; color:#0a1f44; }
+.hero-img-badge .badge-text span { font-size:11px; color:#475569; font-weight:500; }
+
+/* ABOUT STRIP */
+.about-strip { background:#f8fafc; padding:70px 5%; }
+.about-strip-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; max-width:1200px; margin:auto; }
+.about-strip img { width:100%; border-radius:16px; box-shadow:0 20px 60px rgba(10,31,68,0.12); }
+.sister-tag { background:rgba(230,57,70,0.08); border:1px solid rgba(230,57,70,0.2); color:#e63946; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:5px 14px; border-radius:50px; display:inline-block; margin-bottom:12px; }
+.check-list { list-style:none; margin:20px 0 30px; }
+.check-list li { display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; font-size:15px; color:#475569; }
+.check-list li::before { content:'✓'; color:#00a86b; font-weight:800; font-size:16px; flex-shrink:0; margin-top:1px; }
+
+/* SERVICES PREVIEW */
+.services-preview { padding:90px 5%; }
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:10px; }
+.svc-card { background:white; border:1px solid #e2e8f0; border-radius:18px; padding:36px 28px; transition:all 0.3s; position:relative; overflow:hidden; }
+.svc-card::before { content:''; position:absolute; top:0;left:0;right:0; height:4px; background:linear-gradient(90deg,#00a86b,#00c97f); transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
+.svc-card:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(10,31,68,0.15); border-color:rgba(0,168,107,0.25); }
+.svc-card:hover::before { transform:scaleX(1); }
+.svc-icon { width:60px;height:60px; background:rgba(0,168,107,0.1); border-radius:14px; display:flex;align-items:center;justify-content:center; font-size:28px; margin-bottom:20px; transition:all 0.3s; }
+.svc-card:hover .svc-icon { background:#00a86b; }
+.svc-card h3 { font-size:20px; font-weight:700; color:#0a1f44; margin-bottom:10px; }
+.svc-card p { font-size:14px; color:#475569; line-height:1.65; margin-bottom:18px; }
+.svc-link { color:#00a86b; font-size:13px; font-weight:600; text-decoration:none; letter-spacing:0.5px; display:inline-flex; align-items:center; gap:6px; }
+.svc-link:hover { gap:10px; }
+
+/* STATS SECTION */
+.stats-section { background:linear-gradient(135deg,#060f24,#0a1f44); padding:80px 5%; }
+.stats-section .section-title { color:white; }
+.stats-big-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.08); border-radius:16px; overflow:hidden; margin-top:40px; }
+.stat-big { background:rgba(255,255,255,0.03); padding:40px 30px; text-align:center; transition:all 0.3s; }
+.stat-big:hover { background:rgba(0,168,107,0.12); }
+.stat-big .num { font-size:clamp(36px,5vw,58px); font-weight:900; color:white; line-height:1; margin-bottom:8px; }
+.stat-big .num em { color:#00c97f; font-style:normal; }
+.stat-big .lbl { font-size:13px; color:rgba(255,255,255,0.55); font-weight:500; text-transform:uppercase; letter-spacing:1px; }
+
+/* WHY US */
+.why-us { padding:90px 5%; background:#f8fafc; }
+.why-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+.why-items { display:flex; flex-direction:column; gap:22px; }
+.why-item { display:flex; gap:18px; align-items:flex-start; background:white; padding:24px; border-radius:14px; border:1px solid #e2e8f0; transition:all 0.3s; }
+.why-item:hover { border-color:#00a86b; box-shadow:0 8px 30px rgba(0,168,107,0.12); }
+.why-item .wi-icon { width:50px;height:50px; background:linear-gradient(135deg,#00a86b,#007a4d); border-radius:12px; display:flex;align-items:center;justify-content:center; font-size:22px; flex-shrink:0; }
+.why-item h4 { font-size:16px; font-weight:700; color:#0a1f44; margin-bottom:5px; }
+.why-item p { font-size:14px; color:#475569; line-height:1.6; }
+.why-img { border-radius:20px; overflow:hidden; box-shadow:0 20px 60px rgba(10,31,68,0.15); }
+.why-img img { width:100%; height:100%; object-fit:cover; }
+
+/* AWARD BANNER */
+.award-banner { background:linear-gradient(135deg,#00a86b,#007a4d); padding:50px 5%; text-align:center; }
+.award-banner h2 { font-family:'Playfair Display',serif; font-size:clamp(22px,3.5vw,38px); color:white; font-weight:700; margin-bottom:10px; }
+.award-banner p { color:rgba(255,255,255,0.85); font-size:16px; max-width:700px; margin:0 auto 24px; }
+
+/* CLIENTS STRIP */
+.clients-strip { padding:70px 5%; text-align:center; }
+.clients-logos { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:30px; }
+.client-chip { background:#f1f5f9; border:1px solid #e2e8f0; border-radius:50px; padding:10px 20px; font-size:13px; font-weight:600; color:#0a1f44; transition:all 0.3s; white-space:nowrap; }
+.client-chip:hover { background:#0a1f44; color:white; border-color:#0a1f44; transform:translateY(-2px); }
+
+/* CTA SECTION */
+.cta-section { background:linear-gradient(135deg,#060f24,#0a1f44); padding:90px 5%; text-align:center; position:relative; overflow:hidden; }
+.cta-section::before { content:''; position:absolute; top:-100px;right:-100px; width:400px;height:400px; background:radial-gradient(circle,rgba(0,168,107,0.12),transparent 70%); }
+.cta-section h2 { font-family:'Playfair Display',serif; font-size:clamp(28px,4.5vw,50px); color:white; margin-bottom:16px; }
+.cta-section p { color:rgba(255,255,255,0.7); font-size:17px; max-width:550px; margin:0 auto 36px; }
+.cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+@media(max-width:900px){
+  .hero-grid,.about-strip-grid,.why-grid{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .stats-big-grid{grid-template-columns:repeat(2,1fr);}
+  .hero-img-wrap{display:none;}
+  .hero{padding:100px 5% 60px;min-height:auto;}
+  .hero h1{font-size:clamp(32px,7vw,52px);}
+}
+@media(max-width:768px){
+  .about-strip-grid{grid-template-columns:1fr;}
+  .about-strip-grid img{max-height:300px;object-fit:cover;}
+  .why-grid{grid-template-columns:1fr;}
+  .award-banner{padding:40px 5%;}
+  .hero-btns{flex-direction:column;align-items:flex-start;gap:10px;}
+  .hero-btns .btn{width:100%;justify-content:center;}
+}
+@media(max-width:600px){
+  .services-grid{grid-template-columns:1fr;}
+  .stats-big-grid{grid-template-columns:1fr 1fr;}
+  .hero-stats{gap:8px;overflow-x:auto;}
+  .hero-stat .num{font-size:18px;}
+  .hero-stat .lbl{font-size:9px;letter-spacing:0.5px;}
+  .hero-divider{height:32px;}
+  .cta-btns{flex-direction:column;align-items:center;}
+  .cta-btns .btn{width:100%;justify-content:center;max-width:300px;}
+  .clients-logos{gap:8px;}
+  .client-chip{font-size:12px;padding:8px 14px;}
+}
+</style>
+</head>
+<body>
+<div id="scroll-progress"></div><button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to Top">&#8679;</button>
+<div class="page-wrapper">
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="images/ve_logo.png" alt="VE Logo" style="height:42px;width:42px;object-fit:contain;border-radius:6px;"/>
+    <div class="logo-text">
+      <span class="logo-name">Vajreshwari Enterprises</span>
+      <span class="logo-sub">Serving Since 2010</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="clients.html">Clients &amp; Coverage</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="this.closest('nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Animated background layers -->
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge"><span class="dot"></span>Trusted Since 2010 &nbsp;|&nbsp; PAN India</div>
+      <h1>India's Premier<br/><span>Transportation &amp;</span><br/>Logistics Partner</h1>
+      <p class="hero-desc">From luxury passenger vehicles to emergency services and specialized manpower — Vajreshwari Enterprises delivers end-to-end mobility solutions across India with unmatched reliability.</p>
+      <div class="hero-btns">
+        <a href="services.html" class="btn btn-primary">&#9658; Explore Services</a>
+        <a href="contact.html" class="btn btn-outline">Get a Quote &rarr;</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">600<span>+</span></div><div class="lbl">Active Vehicles</div></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><div class="num">1200<span>+</span></div><div class="lbl">Drivers Employed</div></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><div class="num">332<span>Cr+</span></div><div class="lbl">Work Order Value</div></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><div class="num">28<span>+</span></div><div class="lbl">States Covered</div></div>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="images/hero_banner.png" alt="Vajreshwari Enterprise Fleet"/>
+      <div class="hero-img-badge">
+        <div class="badge-icon">🏆</div>
+        <div class="badge-text">
+          <strong>Best Entrepreneur</strong>
+          <span>GEM Portal — PAN India Award</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip">
+  <div class="about-strip-grid">
+    <img src="images/leader_portrait.png" alt="Prateek Gupta – Director"/>
+    <div>
+      <div class="sister-tag">🤝 Two Sister Concern Companies</div>
+      <div class="section-tag">Company Overview</div>
+      <h2 class="section-title">A Legacy of <span>Trust &amp; Excellence</span></h2>
+      <div class="divider"></div>
+      <p style="color:#475569;line-height:1.7;margin-bottom:10px;">Vajreshwari Enterprises (serving since 2010) and its sister concern M/s RC Gupta (serving since 2002) together form one of India's most experienced and trusted transportation conglomerates.</p>
+      <p style="color:#475569;line-height:1.7;margin-bottom:20px;">Led by <strong style="color:#0a1f44;">Mr. Prateek Gupta</strong> — NMIMS Mumbai alumnus and award-winning entrepreneur — the group manages <span class="highlight-red">over ₹481 Crore</span> in combined work order value.</p>
+      <ul class="check-list">
+        <li>Vajreshwari Enterprises — ₹148.5 Cr+ work orders since 2010</li>
+        <li>M/s RC Gupta — ₹332.5 Cr+ work orders since 2002</li>
+        <li>25-member core team at HQ + 1200+ employees PAN India</li>
+        <li>Krady Solutions Pvt Ltd — technology &amp; solutions arm</li>
+      </ul>
+      <a href="about.html" class="btn btn-navy">Read Full Story &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW -->
+<section class="services-preview">
+  <div class="section-header center">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Comprehensive <span>Service Portfolio</span></h2>
+    <div class="divider center"></div>
+    <p class="section-subtitle">End-to-end transportation and logistics solutions tailored for government, PSU, and corporate clients across India.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🚐</div>
+      <h3>Passenger Transportation</h3>
+      <p>Luxury SUVs, MUVs, sedans, Tempo Travellers, and buses for corporate travel, VIP movement, employee commute, and project site logistics.</p>
+      <a href="services.html" class="svc-link">Learn More →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🚑</div>
+      <h3>Emergency &amp; Heavy-Duty</h3>
+      <p>Ambulances, fire fighting trucks, nuclear waste management vehicles, and CNG Cascade MCV/LCV for critical infrastructure operations.</p>
+      <a href="services.html" class="svc-link">Learn More →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">👷</div>
+      <h3>Manpower Supply</h3>
+      <p>Trained drivers, fire fighters, and skilled workforce with 1000+ employees enrolled in ESI and EPF. Fully compliant and reliable.</p>
+      <a href="services.html" class="svc-link">Learn More →</a>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px;">
+    <a href="services.html" class="btn btn-primary">View All Services &rarr;</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="section-header center">
+    <div class="section-tag" style="border-color:rgba(0,168,107,0.4);">Our Track Record</div>
+    <h2 class="section-title" style="color:white;">Numbers That <span>Speak Volumes</span></h2>
+  </div>
+  <div class="stats-big-grid">
+    <div class="stat-big"><div class="num"><em>400</em>+</div><div class="lbl">Work Orders Awarded</div></div>
+    <div class="stat-big"><div class="num"><em>350</em>+</div><div class="lbl">Successfully Completed</div></div>
+    <div class="stat-big"><div class="num"><em>2000</em>+</div><div class="lbl">Vehicles Purchased</div></div>
+    <div class="stat-big"><div class="num"><em>481</em>Cr</div><div class="lbl">Combined Work Order Value</div></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us">
+  <div class="why-grid">
+    <div>
+      <div class="section-tag">Why Choose Us</div>
+      <h2 class="section-title">Built on <span>Reliability,</span><br/>Driven by <span>Excellence</span></h2>
+      <div class="divider"></div>
+      <div class="why-items">
+        <div class="why-item">
+          <div class="wi-icon">🏅</div>
+          <div>
+            <h4>Award-Winning Excellence</h4>
+            <p>Received Best Women Entrepreneur Award for highest work order value on GEM Portal PAN India in our category.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="wi-icon">📋</div>
+          <div>
+            <h4>Full Regulatory Compliance</h4>
+            <p>All drivers enrolled in ESI & EPF. Every vehicle meets government standards with proper documentation and insurance.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="wi-icon">🌏</div>
+          <div>
+            <h4>PAN India Presence</h4>
+            <p>Operations spanning 28+ states covering all major cities, project sites, and remote locations across India.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="wi-icon">⚡</div>
+          <div>
+            <h4>24/7 Emergency Response</h4>
+            <p>Round-the-clock availability for emergency services including ambulances and critical infrastructure support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-img">
+      <img src="images/services_fleet.png" alt="Our Fleet" style="border-radius:20px;"/>
+    </div>
+  </div>
+</section>
+
+<!-- AWARD BANNER -->
+<div class="award-banner">
+  <h2>🏆 Best Entrepreneur Award — GEM Portal, PAN India</h2>
+  <p>Recognized for executing the <strong>highest value of work orders</strong> in our category across GEM Portal — a testament to our commitment to excellence and delivery.</p>
+  <a href="about.html" class="btn" style="background:white;color:#007a4d;font-weight:700;">Read Our Story &rarr;</a>
+</div>
+
+<!-- CLIENTS STRIP -->
+<section class="clients-strip">
+  <div class="section-tag">Our Esteemed Clients</div>
+  <h2 class="section-title">Trusted by India's <span>Leading Organizations</span></h2>
+  <div class="divider center"></div>
+  <div class="clients-logos">
+    <div class="client-chip">GAIL India Ltd</div>
+    <div class="client-chip">GAIL Gas Ltd</div>
+    <div class="client-chip">HPCL</div>
+    <div class="client-chip">BPCL</div>
+    <div class="client-chip">ONGC</div>
+    <div class="client-chip">IOCL</div>
+    <div class="client-chip">ISRO</div>
+    <div class="client-chip">NPCIL</div>
+    <div class="client-chip">Green Gas Ltd</div>
+    <div class="client-chip">Torrent Gas Pvt Ltd</div>
+    <div class="client-chip">RSGL</div>
+    <div class="client-chip">Indraprastha Gas Grid Ltd</div>
+    <div class="client-chip">IOAGPL</div>
+    <div class="client-chip">Nagar Nigam</div>
+    <div class="client-chip">UIT</div>
+  </div>
+  <div style="margin-top:36px;">
+    <a href="clients.html" class="btn btn-navy">View All Clients &amp; Coverage &rarr;</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-tag" style="border-color:rgba(0,168,107,0.4);">Get Started</div>
+  <h2>Ready to Partner with <span style="color:#00c97f;">India's Best?</span></h2>
+  <p>Whether you need a single vehicle or a fleet — we're here to deliver. Contact us today for a custom quote.</p>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn btn-primary">Contact Us Now &rarr;</a>
+    <a href="tel:+919414309990" class="btn btn-outline">📞 +91 94143 09990</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:16px;">
+        <img src="images/ve_logo.png" alt="VE Logo" style="height:42px;width:42px;object-fit:contain;border-radius:6px;"/>
+        <div class="logo-text">
+          <span class="logo-name" style="color:white;font-size:17px;">Vajreshwari Enterprises</span>
+          <span class="logo-sub">Serving Since 2010</span>
+        </div>
+      </div>
+      <p>India's trusted transportation and manpower solutions provider. Serving government, PSU, and corporate clients across 28+ states since 2010.</p>
+      <div class="social-links">
+        <a href="mailto:Vajreshwari.enterprise@gmail.com" title="Email">✉</a>
+        <a href="tel:+919414309990" title="Phone">📞</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="clients.html">Clients &amp; Coverage</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="services.html">Passenger Transportation</a></li>
+        <li><a href="services.html">Emergency Vehicles</a></li>
+        <li><a href="services.html">Heavy-Duty Logistics</a></li>
+        <li><a href="services.html">Manpower Supply</a></li>
+        <li><a href="services.html">Corporate Fleet</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><span class="icon">📞</span><span>+91 94143 09990</span></div>
+      <div class="footer-contact-item"><span class="icon">✉</span><span>Vajreshwari.enterprise@gmail.com</span></div>
+      <div class="footer-contact-item"><span class="icon">📍</span><span>Rajasthan, India<br/>PAN India Operations</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 Vajreshwari Enterprises. All rights reserved.</span>
+    <span>Sister Concern: M/s RC Gupta (Est. 2002) &nbsp;|&nbsp; Krady Solutions Pvt Ltd</span>
+  </div>
+</footer>
+</div>
+<script>window.addEventListener("scroll",function(){document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);});var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.12});document.querySelectorAll(".reveal,.reveal-left,.reveal-right").forEach(function(el){obs.observe(el);});</script>
+<script src="main.js"></script>
+<script>
+// Liquid hero background — sine/cosine Lissajous drift
+// Completely forward-only: t always increases, never reverses
+(function () {
+  var bg   = document.querySelector('.hero-bg');
+  var glow = document.querySelector('.hero-glow');
+  if (!bg) return;
+
+  var t = 0;
+
+  function tick() {
+    // 0.0025 per frame @ 60fps = ~150s per full cycle — clearly visible but very smooth
+    t += 0.0025;
+
+    // X uses sin with one frequency, Y uses cos with a different frequency
+    // Different frequencies = Lissajous curve = never retraces the same path
+    var x = Math.sin(t * 1.1) * 22;          // drift left/right  ±22px
+    var y = Math.cos(t * 0.7) * 14;          // drift up/down     ±14px
+    var s = 1.08 + Math.sin(t * 0.4) * 0.05; // scale  1.03–1.13
+    var b = 0.55 + Math.sin(t * 0.3) * 0.03; // brightness 0.52–0.58
+
+    bg.style.transform = 'scale(' + s.toFixed(4) + ') translate(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px)';
+    bg.style.filter    = 'blur(1px) brightness(' + b.toFixed(3) + ') saturate(1.2)';
+
+    // Glow blob drifts with slightly different frequencies
+    if (glow) {
+      var gx = Math.sin(t * 0.5) * 70;
+      var gy = Math.cos(t * 0.8) * 45;
+      glow.style.transform = 'translate(' + gx.toFixed(2) + 'px,' + gy.toFixed(2) + 'px)';
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

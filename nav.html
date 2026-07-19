@@ -1,0 +1,24 @@
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">VE</div>
+    <div class="logo-text">
+      <span class="logo-name">Vajreshwari Enterprises</span>
+      <span class="logo-sub">Serving Since 2010</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" id="nav-home">Home</a></li>
+    <li><a href="about.html" id="nav-about">About Us</a></li>
+    <li><a href="services.html" id="nav-services">Services</a></li>
+    <li><a href="clients.html" id="nav-clients">Clients & Coverage</a></li>
+    <li><a href="contact.html" class="nav-cta" id="nav-contact">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<script>
+function toggleNav() {
+  document.getElementById('navbar').classList.toggle('open');
+}
+</script>

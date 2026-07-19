@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contact Us | Vajreshwari Enterprises</title>
+<meta name="description" content="Get in touch with Vajreshwari Enterprises. Call +91 94143 09990 or email Vajreshwari.enterprise@gmail.com for transportation and logistics queries."/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="animations.css"/>
+<style>
+.contact-hero{background:linear-gradient(135deg,#060f24 0%,#0a1f44 60%,#1a3366 100%);padding:120px 5% 80px;position:relative;overflow:hidden;}
+.contact-hero-content{position:relative;z-index:1;max-width:700px;}
+.contact-hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,58px);font-weight:800;color:white;line-height:1.1;margin-bottom:16px;}
+.contact-hero h1 span{color:#00c97f;}
+.contact-hero p{font-size:17px;color:rgba(255,255,255,0.72);max-width:520px;line-height:1.75;}
+
+/* CONTACT LAYOUT */
+.contact-main{padding:90px 5%;background:#f8fafc;}
+.contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;max-width:1200px;margin:0 auto;}
+
+/* INFO CARDS */
+.contact-info{display:flex;flex-direction:column;gap:20px;}
+.info-card{background:white;border-radius:16px;padding:24px;border:1px solid #e2e8f0;display:flex;align-items:flex-start;gap:16px;box-shadow:0 4px 16px rgba(10,31,68,0.06);transition:all 0.3s;}
+.info-card:hover{border-color:#00a86b;transform:translateX(4px);box-shadow:0 10px 40px rgba(0,168,107,0.1);}
+.info-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.info-icon.green{background:rgba(0,168,107,0.1);}
+.info-icon.navy{background:rgba(10,31,68,0.08);}
+.info-card h4{font-size:15px;font-weight:700;color:#0a1f44;margin-bottom:4px;}
+.info-card p,.info-card a{font-size:14px;color:#475569;text-decoration:none;line-height:1.6;}
+.info-card a:hover{color:#00a86b;}
+.director-card{background:linear-gradient(135deg,#0a1f44,#1a3366);border-radius:16px;padding:28px;color:white;margin-top:8px;}
+.director-card h4{font-size:16px;font-weight:700;color:#00c97f;margin-bottom:6px;}
+.director-card .name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:white;margin-bottom:4px;}
+.director-card .title{font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:14px;}
+.director-contact a{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.8);text-decoration:none;font-size:14px;margin-bottom:8px;transition:all 0.3s;}
+.director-contact a:hover{color:#00c97f;}
+
+/* FORM */
+.contact-form-wrap{background:white;border-radius:20px;padding:40px;box-shadow:0 8px 40px rgba(10,31,68,0.1);border:1px solid #e2e8f0;}
+.contact-form-wrap h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#0a1f44;margin-bottom:6px;}
+.contact-form-wrap .form-sub{font-size:14px;color:#475569;margin-bottom:28px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:13px;font-weight:600;color:#334155;margin-bottom:6px;letter-spacing:0.3px;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:#0a1f44;background:white;transition:all 0.3s;outline:none;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#00a86b;box-shadow:0 0 0 3px rgba(0,168,107,0.1);}
+.form-group textarea{height:120px;resize:vertical;}
+.form-group select{cursor:pointer;}
+.submit-btn{width:100%;padding:15px;background:linear-gradient(135deg,#00a86b,#007a4d);color:white;font-size:16px;font-weight:700;border:none;border-radius:12px;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif;letter-spacing:0.5px;}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,168,107,0.4);}
+.form-note{font-size:12px;color:#94a3b8;text-align:center;margin-top:12px;}
+
+/* WHY CONTACT */
+.why-contact{padding:80px 5%;}
+.why-contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.wc-card{background:white;border-radius:18px;padding:32px 24px;text-align:center;border:1px solid #e2e8f0;box-shadow:0 4px 16px rgba(10,31,68,0.06);transition:all 0.3s;}
+.wc-card:hover{transform:translateY(-5px);border-color:#00a86b;box-shadow:0 16px 50px rgba(0,168,107,0.12);}
+.wc-icon{font-size:40px;margin-bottom:16px;}
+.wc-card h4{font-size:17px;font-weight:700;color:#0a1f44;margin-bottom:8px;}
+.wc-card p{font-size:14px;color:#475569;line-height:1.6;}
+
+/* MAP STRIP */
+.map-strip{background:#f8fafc;padding:70px 5%;text-align:center;}
+.map-embed{width:100%;height:380px;border-radius:20px;overflow:hidden;box-shadow:0 16px 50px rgba(10,31,68,0.1);border:1px solid #e2e8f0;margin-top:30px;background:linear-gradient(135deg,#0a1f44,#1a3366);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+.map-embed span{font-size:64px;}
+.map-embed h3{color:white;font-size:20px;font-weight:700;}
+.map-embed p{color:rgba(255,255,255,0.7);font-size:14px;}
+
+/* TOAST */
+#toast{position:fixed;bottom:30px;right:30px;background:#00a86b;color:white;padding:14px 24px;border-radius:12px;font-size:14px;font-weight:600;transform:translateY(100px);opacity:0;transition:all 0.4s;z-index:9999;box-shadow:0 8px 30px rgba(0,168,107,0.4);}
+#toast.show{transform:translateY(0);opacity:1;}
+
+@media(max-width:900px){
+  .contact-layout{grid-template-columns:1fr;}
+  .why-contact-grid{grid-template-columns:1fr 1fr;}
+  .form-row{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .why-contact-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div id="scroll-progress"></div><button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to Top">&#8679;</button>
+<div class="page-wrapper">
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="images/ve_logo.png" alt="VE Logo" style="height:42px;width:42px;object-fit:contain;border-radius:6px;"/>
+    <div class="logo-text"><span class="logo-name">Vajreshwari Enterprises</span><span class="logo-sub">Serving Since 2010</span></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="clients.html">Clients &amp; Coverage</a></li>
+    <li><a href="contact.html" class="nav-cta active">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="this.closest('nav').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <div class="contact-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Contact Us</span></div>
+    <div class="section-tag">Get In Touch</div>
+    <h1>Let's Build a <span>Partnership</span> That Moves India</h1>
+    <p>Whether you need a single vehicle or a full fleet deployment across multiple states — we're ready to serve. Reach out today and get a custom quote within 24 hours.</p>
+  </div>
+</section>
+
+<!-- CONTACT MAIN -->
+<section class="contact-main">
+  <div class="contact-layout">
+    <!-- INFO -->
+    <div class="contact-info">
+      <div>
+        <div class="section-tag">Our Details</div>
+        <h2 class="section-title" style="font-size:28px;">We're Here<br/><span>to Help</span></h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon green">📞</div>
+        <div>
+          <h4>Phone</h4>
+          <a href="tel:+919414309990">+91 94143 09990</a>
+          <p>Available 9 AM – 7 PM, Mon–Sat</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon navy">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:Vajreshwari.enterprise@gmail.com">Vajreshwari.enterprise@gmail.com</a>
+          <p>We respond within 24 business hours</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon green">📍</div>
+        <div>
+          <h4>Headquarters</h4>
+          <p>Rajasthan, India</p>
+          <p style="color:#00a86b;font-weight:600;">PAN India Operations — 28+ States</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon navy">🏛️</div>
+        <div>
+          <h4>GEM Portal Registration</h4>
+          <p>Registered &amp; Award-Winning Vendor<br/>Government e-Marketplace, India</p>
+        </div>
+      </div>
+
+      <div class="director-card">
+        <h4>Direct Contact</h4>
+        <div class="name">Prateek Gupta</div>
+        <div class="title">Director — Vajreshwari Enterprises &amp; M/s RC Gupta</div>
+        <div class="director-contact">
+          <a href="tel:+919414309990">📞 +91 94143 09990</a>
+          <a href="mailto:Vajreshwari.enterprise@gmail.com">✉️ Vajreshwari.enterprise@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form-wrap">
+      <h3>Send Us a Message</h3>
+      <p class="form-sub">Fill in the details below and our team will get back to you within 24 hours with a tailored proposal.</p>
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" placeholder="Your first name" required/>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" placeholder="Your last name" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="company">Company / Organization *</label>
+          <input type="text" id="company" placeholder="Your company name" required/>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" placeholder="your@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="service">Service Required *</label>
+          <select id="service" required>
+            <option value="">— Select a Service —</option>
+            <option>Passenger Transportation</option>
+            <option>Emergency / Ambulance Services</option>
+            <option>Fire Fighting Vehicle Provision</option>
+            <option>Heavy-Duty Logistics</option>
+            <option>Nuclear Waste Management Transport</option>
+            <option>CNG Cascade MCV/LCV</option>
+            <option>Manpower Supply (Drivers)</option>
+            <option>Manpower Supply (Fire Fighters)</option>
+            <option>Full Fleet Deployment</option>
+            <option>Other / Custom Requirement</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="state">State / Location *</label>
+            <input type="text" id="state" placeholder="State of operation" required/>
+          </div>
+          <div class="form-group">
+            <label for="vehicles">No. of Vehicles / Manpower</label>
+            <input type="text" id="vehicles" placeholder="e.g., 10 vehicles, 20 drivers"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message / Requirement Details *</label>
+          <textarea id="message" placeholder="Describe your requirement — type of vehicles, duration, locations, any special needs..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">📩 Send Enquiry Now</button>
+        <p class="form-note">🔒 Your information is secure and will never be shared with third parties.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CONTACT -->
+<section class="why-contact">
+  <div class="section-header center">
+    <div class="section-tag">Why Partner With Us</div>
+    <h2 class="section-title">What You Get When <span>You Call Us</span></h2>
+    <div class="divider center"></div>
+  </div>
+  <div class="why-contact-grid">
+    <div class="wc-card">
+      <div class="wc-icon">⚡</div>
+      <h4>Fast Response</h4>
+      <p>Our team responds to all enquiries within 24 business hours with a detailed proposal tailored to your requirement.</p>
+    </div>
+    <div class="wc-card">
+      <div class="wc-icon">📋</div>
+      <h4>Custom Proposals</h4>
+      <p>No fixed packages. Every quote is custom-built around your specific operational needs, location, and fleet size.</p>
+    </div>
+    <div class="wc-card">
+      <div class="wc-icon">🤝</div>
+      <h4>Long-Term Partnership</h4>
+      <p>We don't just provide vehicles — we build lasting partnerships. Our repeat clients include India's largest PSUs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAP STRIP -->
+<section class="map-strip">
+  <div class="section-tag">Headquarters</div>
+  <h2 class="section-title">Find <span>Our Office</span></h2>
+  <div class="divider center"></div>
+  <div class="map-embed">
+    <span>📍</span>
+    <h3>Rajasthan, India</h3>
+    <p>PAN India Operations &nbsp;|&nbsp; 28+ States Covered</p>
+  </div>
+</section>
+
+<!-- TOAST -->
+<div id="toast">✅ Message sent! We'll reply within 24 hours.</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="nav-logo" style="margin-bottom:16px;"><img src="images/ve_logo.png" alt="VE Logo" style="height:42px;width:42px;object-fit:contain;border-radius:6px;"/><div class="logo-text"><span class="logo-name" style="color:white;font-size:17px;">Vajreshwari Enterprises</span><span class="logo-sub">Serving Since 2010</span></div></div><p>India's trusted transportation and manpower solutions provider across 28+ states since 2010.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="clients.html">Clients &amp; Coverage</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Passenger Transport</a></li><li><a href="services.html">Emergency Vehicles</a></li><li><a href="services.html">Manpower Supply</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span class="icon">📞</span><span>+91 94143 09990</span></div><div class="footer-contact-item"><span class="icon">✉</span><span>Vajreshwari.enterprise@gmail.com</span></div><div class="footer-contact-item"><span class="icon">📍</span><span>Rajasthan, India — PAN India Ops</span></div></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2025 Vajreshwari Enterprises. All rights reserved.</span><span>Sister Concern: M/s RC Gupta (Est. 2002) &nbsp;|&nbsp; Krady Solutions Pvt Ltd</span></div>
+</footer>
+</div>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('contactForm').reset();
+    btn.textContent = '📩 Send Enquiry Now';
+    btn.disabled = false;
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }, 1200);
+}
+</script>
+<script src="main.js"></script>
+</body>
+</html>
