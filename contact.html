@@ -8,11 +8,52 @@
 <link rel="stylesheet" href="styles.css"/>
 <link rel="stylesheet" href="animations.css"/>
 <style>
-.contact-hero{background:linear-gradient(135deg,#060f24 0%,#0a1f44 60%,#1a3366 100%);padding:120px 5% 80px;position:relative;overflow:hidden;}
-.contact-hero-content{position:relative;z-index:1;max-width:700px;}
-.contact-hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,58px);font-weight:800;color:white;line-height:1.1;margin-bottom:16px;}
-.contact-hero h1 span{color:#00c97f;}
-.contact-hero p{font-size:17px;color:rgba(255,255,255,0.72);max-width:520px;line-height:1.75;}
+.contact-hero {
+  position: relative;
+  overflow: hidden;
+  background: #060f24;
+  padding: 120px 5% 85px;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+}
+.contact-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.contact-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.65) contrast(1.08) saturate(1.06);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+}
+.contact-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  color: white;
+}
+.contact-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 800;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.contact-hero h1 span {
+  color: #00c97f;
+}
+.contact-hero p {
+  font-size: 16.5px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.75;
+}
 
 /* CONTACT LAYOUT */
 .contact-main{padding:90px 5%;background:#f8fafc;}
@@ -99,11 +140,14 @@
 
 <!-- HERO -->
 <section class="contact-hero">
+  <div class="contact-hero-bg">
+    <img src="images/hero_fleet_4k.png" alt="Vajreshwari Enterprises Fleet Showcase" class="contact-hero-img"/>
+  </div>
   <div class="contact-hero-content">
     <div class="breadcrumb"><a href="index.html">Home</a> / <span>Contact Us</span></div>
     <div class="section-tag">Get In Touch</div>
-    <h1>Let's Build a <span>Partnership</span> That Moves India</h1>
-    <p>Whether you need a single vehicle or a full fleet deployment across multiple states — we're ready to serve. Reach out today and get a custom quote within 24 hours.</p>
+    <h1>Partner With <span>India's Best</span></h1>
+    <p>Ready to streamline your fleet, passenger transportation, or manpower requirements? Our team is available 24/7 to support your organization.</p>
   </div>
 </section>
 
