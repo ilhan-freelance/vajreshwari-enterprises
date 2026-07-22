@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="color-scheme" content="light"/>
+<meta name="supported-color-schemes" content="light"/>
 <title>Vajreshwari Enterprises | Professional Transportation & Logistics</title>
 <meta name="description" content="Vajreshwari Enterprises – India's trusted transportation, emergency vehicle & manpower services provider since 2009. 1200+ drivers, 600+ vehicles, PAN India coverage."/>
 <link rel="stylesheet" href="styles.css"/>
@@ -226,28 +228,70 @@
   .about-strip-grid,.why-grid{grid-template-columns:1fr;}
   .services-grid{grid-template-columns:1fr 1fr;}
   .stats-big-grid{grid-template-columns:repeat(2,1fr);}
-  .hero-content{flex-direction:column;align-items:flex-start;}
-  .hero-stats-bar{width:100%;}
-  .hero-stat-item{flex:1;}
+  .hero-content{flex-direction:column;align-items:stretch;gap:16px;}
+  .hero-stats-bar{width:100%;display:grid;grid-template-columns:repeat(4,1fr);}
+  .hero-btns{width:100%;justify-content:center;}
+  .hero-btns .btn{flex:1;justify-content:center;text-align:center;}
 }
 @media(max-width:768px){
   .about-strip-grid{grid-template-columns:1fr;}
   .about-strip-grid img{max-height:300px;object-fit:cover;}
   .why-grid{grid-template-columns:1fr;}
   .award-banner{padding:40px 5%;}
-  .hero-btns{flex-direction:column;align-items:flex-start;gap:10px;}
-  .hero-btns .btn{width:100%;justify-content:center;max-width:280px;}
-  .hero-overlay{padding:30px 5% 20px;}
-  .hero-stat-item{padding:8px 10px;}
-  .hero-stat-item .num{font-size:15px;}
-  .hero-stat-item .lbl{font-size:8px;}
 }
-@media(max-width:600px){
+@media(max-width:640px){
+  .hero {
+    display: flex;
+    flex-direction: column;
+    background: #060f24;
+  }
+  .hero-img {
+    height: auto;
+    max-height: 48vh;
+    object-fit: contain;
+    background: #060f24;
+  }
+  .hero-overlay {
+    position: relative;
+    bottom: auto;
+    background: #060f24;
+    padding: 20px 16px 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .hero-btns .btn {
+    width: 100%;
+    justify-content: center;
+    max-width: 100%;
+    padding: 12px 16px;
+    font-size: 13.5px;
+  }
+  .hero-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .hero-stat-item {
+    padding: 10px 8px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-stat-item:nth-child(2n) {
+    border-right: none;
+  }
+  .hero-stat-item:nth-child(3), .hero-stat-item:nth-child(4) {
+    border-bottom: none;
+  }
   .services-grid{grid-template-columns:1fr;}
   .stats-big-grid{grid-template-columns:1fr 1fr;}
-  .hero-btns .btn{font-size:13px;padding:10px 18px;}
   .cta-btns{flex-direction:column;align-items:center;}
-  .cta-btns .btn{width:100%;justify-content:center;max-width:300px;}
+  .cta-btns .btn{width:100%;justify-content:center;max-width:100%;}
   .clients-logos{gap:8px;}
   .client-chip{font-size:12px;padding:8px 14px;}
 }

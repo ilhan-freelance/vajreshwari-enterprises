@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
 
-:root {
+:root, html, body {
+  color-scheme: light !important;
+  supported-color-schemes: light !important;
   --navy: #0a1f44;
   --navy-dark: #060f24;
   --navy-mid: #112255;
@@ -24,9 +26,48 @@
   --transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--navy); line-height: 1.6; overflow-x: hidden; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff !important;
+  color: #0a1f44 !important;
+  line-height: 1.6;
+  overflow-x: hidden !important;
+  width: 100%;
+}
+
+/* Force light mode globally — completely blocking browser auto-dark mode or OS color inversion */
+@media (prefers-color-scheme: dark) {
+  :root, html, body {
+    color-scheme: light !important;
+    background-color: #ffffff !important;
+    color: #0a1f44 !important;
+  }
+  .page-wrapper, section, .why-us, .about-strip, .services-preview, .client-cats, .coverage-section, .contact-main {
+    background-color: #ffffff !important;
+  }
+  .svc-card, .client-card, .info-card, .value-card, .contact-form-wrap, .why-item, .journey-card, .ach-card, .stat-big, .wc-card {
+    background-color: #ffffff !important;
+    color: #0a1f44 !important;
+    border-color: #e2e8f0 !important;
+  }
+  p, .svc-card p, .client-desc, .why-item p, .jc-desc, .info-card p, .wc-card p {
+    color: #475569 !important;
+  }
+  h1, h2, h3, h4, h5, h6, .section-title, .jc-title, .client-name {
+    color: #0a1f44 !important;
+  }
+  .section-title span, .logo-sub, .highlight-green {
+    color: #00a86b !important;
+  }
+}
 
 /* ===== NAVBAR ===== */
 nav {
