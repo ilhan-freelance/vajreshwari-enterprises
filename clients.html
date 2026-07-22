@@ -8,11 +8,67 @@
 <link rel="stylesheet" href="styles.css"/>
 <link rel="stylesheet" href="animations.css"/>
 <style>
-.clients-hero{background:linear-gradient(135deg,#060f24 0%,#0a1f44 60%,#1a3366 100%);padding:120px 5% 80px;position:relative;overflow:hidden;}
-.clients-hero::before{content:'';position:absolute;inset:0;background:url('images/india_coverage_map.png') right center/contain no-repeat;opacity:0.1;}
-.clients-hero-content{position:relative;z-index:1;max-width:700px;}
-.clients-hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,58px);font-weight:800;color:white;line-height:1.1;margin-bottom:16px;}
-.clients-hero h1 span{color:#00c97f;}
+.clients-hero {
+  background: linear-gradient(135deg, #060f24 0%, #0a1f44 60%, #0d2b3a 100%);
+  padding: 110px 5% 80px;
+  position: relative;
+  overflow: hidden;
+}
+.clients-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 50px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.clients-hero-content {
+  color: white;
+}
+.clients-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 800;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.clients-hero h1 span {
+  color: #00c97f;
+}
+.clients-hero p {
+  font-size: 16.5px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.75;
+}
+.clients-hero-map-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 30px rgba(0,168,107,0.15);
+}
+.clients-map-img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.4));
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+@media (max-width: 900px) {
+  .clients-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
 
 /* CLIENT CATEGORIES */
 .client-cats{padding:90px 5%;}
@@ -25,7 +81,21 @@
 .client-card .client-sector{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#00a86b;margin-bottom:10px;}
 .client-card .client-name{font-size:20px;font-weight:800;color:#0a1f44;margin-bottom:8px;}
 .client-card .client-desc{font-size:13px;color:#475569;line-height:1.6;}
-.client-icon{font-size:36px;margin-bottom:16px;}
+.client-logo-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 16px rgba(10,31,68,0.08);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.client-card:hover .client-logo-box {
+  transform: scale(1.08);
+}
 
 /* INDIA MAP SECTION */
 .coverage-section{padding:90px 5%;background:#f8fafc;}
@@ -91,11 +161,16 @@
 
 <!-- HERO -->
 <section class="clients-hero">
-  <div class="clients-hero-content">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Clients &amp; Coverage</span></div>
-    <div class="section-tag">Our Reach</div>
-    <h1>Trusted by <span>India's Best.</span><br/>Present Everywhere.</h1>
-    <p>From petroleum giants to nuclear agencies — our clients represent the most prestigious organizations in India. Broad client base supported across 28+ states and union territories.</p>
+  <div class="clients-hero-grid">
+    <div class="clients-hero-content">
+      <div class="breadcrumb"><a href="index.html">Home</a> / <span>Clients &amp; Coverage</span></div>
+      <div class="section-tag">PAN India Presence</div>
+      <h1>Trusted Across <span>28+ States</span> &amp; UTs</h1>
+      <p>From petroleum giants to nuclear research agencies — our client portfolio represents India's premier public sector enterprises and corporate conglomerates, powered by a 600+ fleet and 1200+ workforce.</p>
+    </div>
+    <div class="clients-hero-map-wrap">
+      <img src="images/india_coverage_map.png" alt="Vajreshwari Enterprises – PAN India Coverage Map" class="clients-map-img"/>
+    </div>
   </div>
 </section>
 
@@ -137,121 +212,277 @@
     <p class="section-subtitle">Serving India's most prestigious petroleum, government, and public sector organizations.</p>
   </div>
   <div class="clients-big-grid">
+    <!-- GAIL -->
     <div class="client-card">
-      <div class="client-icon">🛢️</div>
+      <div class="client-logo-box" style="background:#fff4e6;border:1.5px solid #ffcc80;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#0b3c5d"/>
+          <path d="M50 18 C35 38 25 50 25 65 C25 78 36 85 50 85 C64 85 75 78 75 65 C75 50 65 38 50 18 Z" fill="#ff7a00"/>
+          <path d="M50 35 C42 48 35 56 35 66 C35 74 42 79 50 79 C58 79 65 74 65 66 C65 56 58 48 50 35 Z" fill="#ffc107"/>
+        </svg>
+      </div>
       <div class="client-sector">Petroleum &amp; Gas</div>
-      <div class="client-name">GAIL India Ltd</div>
-      <p class="client-desc">India's trusted transportation and manpower solutions provider. Serving government, PSU, and corporate clients across 28+ states since 2009.</p>
+      <div class="client-name">GAIL (India) Ltd</div>
+      <p class="client-desc">India's flagship natural gas company. Providing specialized fleet transportation and operational support since 2009.</p>
     </div>
+
+    <!-- GAIL GAS -->
     <div class="client-card" style="border-color:rgba(230,57,70,0.2);background:rgba(230,57,70,0.02);">
-      <div class="client-icon">⛽</div>
+      <div class="client-logo-box" style="background:#e8f4f8;border:1.5px solid #b3e5fc;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#0277bd"/>
+          <path d="M50 20 L78 75 L22 75 Z" fill="#ffa726"/>
+          <circle cx="50" cy="55" r="14" fill="#ffffff"/>
+          <text x="50" y="60" font-family="Arial,sans-serif" font-weight="900" font-size="12" fill="#0277bd" text-anchor="middle">GAS</text>
+        </svg>
+      </div>
       <div class="client-sector">Petroleum &amp; Gas</div>
       <div class="client-name">GAIL Gas Ltd</div>
       <p class="client-desc">City gas distribution subsidiary of GAIL. Vehicles and drivers deployed for operational logistics and last-mile distribution.</p>
     </div>
+
+    <!-- GREEN GAS -->
     <div class="client-card">
-      <div class="client-icon">🌿</div>
+      <div class="client-logo-box" style="background:#e8f5e9;border:1.5px solid #a5d6a7;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <circle cx="50" cy="50" r="44" fill="#2e7d32"/>
+          <path d="M50 20 C30 40 30 65 50 80 C70 65 70 40 50 20 Z" fill="#a5d6a7"/>
+          <path d="M50 32 C38 48 38 64 50 72 C62 64 62 48 50 32 Z" fill="#ffffff"/>
+        </svg>
+      </div>
       <div class="client-sector">Petroleum &amp; Gas</div>
       <div class="client-name">Green Gas Ltd</div>
       <p class="client-desc">CNG and piped natural gas distribution network. We support their fleet and manpower requirements across multiple cities.</p>
     </div>
+
+    <!-- HPCL -->
     <div class="client-card">
-      <div class="client-icon">🏭</div>
+      <div class="client-logo-box" style="background:#ffebee;border:1.5px solid #ffcdd2;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <ellipse cx="50" cy="50" rx="45" ry="40" fill="#d32f2f"/>
+          <ellipse cx="50" cy="50" rx="36" ry="31" fill="#ffffff"/>
+          <text x="50" y="58" font-family="Impact,Arial,sans-serif" font-weight="900" font-size="28" fill="#d32f2f" text-anchor="middle">HP</text>
+        </svg>
+      </div>
       <div class="client-sector">Petroleum &amp; Gas</div>
       <div class="client-name">HPCL</div>
       <p class="client-desc">Hindustan Petroleum Corporation Limited. Providing specialized transport and emergency vehicle support for their facilities.</p>
     </div>
+
+    <!-- BPCL -->
     <div class="client-card">
-      <div class="client-icon">🏭</div>
+      <div class="client-logo-box" style="background:#fffde7;border:1.5px solid #fff59d;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <circle cx="50" cy="50" r="44" fill="#fbc02d"/>
+          <circle cx="50" cy="50" r="32" fill="#0277bd"/>
+          <circle cx="50" cy="50" r="22" fill="#ffffff"/>
+          <text x="50" y="56" font-family="Arial,sans-serif" font-weight="900" font-size="14" fill="#0277bd" text-anchor="middle">BP</text>
+        </svg>
+      </div>
       <div class="client-sector">Petroleum &amp; Gas</div>
       <div class="client-name">BPCL</div>
       <p class="client-desc">Bharat Petroleum Corporation Limited. End-to-end transportation solutions for their corporate and operational requirements.</p>
     </div>
+
+    <!-- ONGC -->
     <div class="client-card">
-      <div class="client-icon">⚙️</div>
+      <div class="client-logo-box" style="background:#fbe9e7;border:1.5px solid #ffab91;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect x="8" y="8" width="84" height="84" rx="12" fill="#bf360c"/>
+          <path d="M50 22 C38 40 32 54 32 68 C32 78 40 82 50 82 C60 82 68 78 68 68 C68 54 62 40 50 22 Z" fill="#ffb300"/>
+          <text x="50" y="66" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#bf360c" text-anchor="middle">ONGC</text>
+        </svg>
+      </div>
       <div class="client-sector">Petroleum &amp; Gas</div>
       <div class="client-name">ONGC</div>
       <p class="client-desc">Oil and Natural Gas Corporation. Supplying reliable vehicles and trained manpower for onshore operations and exploration sites.</p>
     </div>
+
+    <!-- IOCL -->
     <div class="client-card">
-      <div class="client-icon">🔴</div>
+      <div class="client-logo-box" style="background:#fff3e0;border:1.5px solid #ffe082;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <circle cx="50" cy="50" r="44" fill="#f57c00"/>
+          <rect x="12" y="42" width="76" height="16" fill="#0d47a1"/>
+          <text x="50" y="54" font-family="Arial,sans-serif" font-weight="900" font-size="11" fill="#ffffff" text-anchor="middle">IndianOil</text>
+        </svg>
+      </div>
       <div class="client-sector">Petroleum &amp; Gas</div>
       <div class="client-name">IOCL</div>
       <p class="client-desc">Indian Oil Corporation Limited — India's largest commercial enterprise. Trusted transportation partner for multiple state operations.</p>
     </div>
+
+    <!-- TORRENT GAS -->
     <div class="client-card">
-      <div class="client-icon">🔥</div>
+      <div class="client-logo-box" style="background:#e1f5fe;border:1.5px solid #81d4fa;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#0288d1"/>
+          <path d="M20 65 Q 50 30 80 65 Q 50 90 20 65 Z" fill="#00e676"/>
+          <text x="50" y="45" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#ffffff" text-anchor="middle">TORRENT</text>
+        </svg>
+      </div>
       <div class="client-sector">Petroleum &amp; Gas</div>
       <div class="client-name">Torrent Gas Pvt Ltd</div>
       <p class="client-desc">Leading private city gas distribution company. Fleet and driver deployment for their distribution network across states.</p>
     </div>
+
+    <!-- IGGL -->
     <div class="client-card">
-      <div class="client-icon">🌐</div>
+      <div class="client-logo-box" style="background:#e0f7fa;border:1.5px solid #80deea;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#00838f"/>
+          <circle cx="50" cy="50" r="28" fill="none" stroke="#ff9800" stroke-width="8"/>
+          <text x="50" y="56" font-family="Arial,sans-serif" font-weight="900" font-size="15" fill="#ffffff" text-anchor="middle">IGGL</text>
+        </svg>
+      </div>
       <div class="client-sector">Petroleum &amp; Gas</div>
       <div class="client-name">Indraprastha Gas Grid Ltd</div>
       <p class="client-desc">Major CNG and PNG gas distribution network. Transportation and operational support for their Delhi-NCR and interstate operations.</p>
     </div>
+
+    <!-- ISRO -->
     <div class="client-card" style="border-color:rgba(230,57,70,0.2);background:rgba(230,57,70,0.02);">
-      <div class="client-icon">🚀</div>
+      <div class="client-logo-box" style="background:#fff3e0;border:1.5px solid #ffcc80;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#ef6c00"/>
+          <path d="M50 15 L75 75 L50 60 L25 75 Z" fill="#ffffff"/>
+          <path d="M50 15 L50 60 L75 75 Z" fill="#1565c0"/>
+          <text x="50" y="90" font-family="Arial,sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle">ISRO</text>
+        </svg>
+      </div>
       <div class="client-sector" style="color:#e63946;">Central Government</div>
       <div class="client-name">ISRO</div>
       <p class="client-desc"><span class="highlight-red">India's premier space agency.</span> Providing specialized transportation solutions including sensitive cargo movement for India's space research missions.</p>
     </div>
+
+    <!-- NPCIL -->
     <div class="client-card" style="border-color:rgba(230,57,70,0.2);background:rgba(230,57,70,0.02);">
-      <div class="client-icon">⚛️</div>
+      <div class="client-logo-box" style="background:#e8eaf6;border:1.5px solid #c5cae9;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#1a237e"/>
+          <ellipse cx="50" cy="50" rx="38" ry="14" fill="none" stroke="#ff6f00" stroke-width="4" transform="rotate(30 50 50)"/>
+          <ellipse cx="50" cy="50" rx="38" ry="14" fill="none" stroke="#ff6f00" stroke-width="4" transform="rotate(-30 50 50)"/>
+          <circle cx="50" cy="50" r="10" fill="#ffffff"/>
+        </svg>
+      </div>
       <div class="client-sector" style="color:#e63946;">Central Government</div>
       <div class="client-name">NPCIL</div>
       <p class="client-desc"><span class="highlight-red">Nuclear Power Corporation of India.</span> Trusted with sensitive nuclear waste management transportation — the highest compliance standard in India.</p>
     </div>
+
+    <!-- NAGAR NIGAM & UIT -->
     <div class="client-card">
-      <div class="client-icon">🏛️</div>
+      <div class="client-logo-box" style="background:#e8f5e9;border:1.5px solid #c8e6c9;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <polygon points="50,10 90,35 90,85 10,85 10,35" fill="#1b5e20"/>
+          <polygon points="50,22 78,42 78,75 22,75 22,42" fill="#ffffff"/>
+          <text x="50" y="62" font-family="Arial,sans-serif" font-weight="900" font-size="14" fill="#1b5e20" text-anchor="middle">UIT</text>
+        </svg>
+      </div>
       <div class="client-sector">State Government</div>
       <div class="client-name">Nagar Nigam &amp; UIT</div>
       <p class="client-desc">State government urban development bodies. Supporting municipal transportation and manpower needs across Rajasthan and beyond.</p>
     </div>
-  <div class="client-card">
-    <div class="client-icon">🏭</div>
-    <div class="client-sector">Petroleum &amp; Gas</div>
-    <div class="client-name">NFC - NATURAL FUEL COMPLEX</div>
-    <p class="client-desc">Client description placeholder.</p>
-</div>
-<div class="client-card">
-    <div class="client-icon">🏭</div>
-    <div class="client-sector">Petroleum &amp; Gas</div>
-    <div class="client-name">Vadodara gas limited</div>
-    <p class="client-desc">Client description placeholder.</p>
-</div>
-<div class="client-card">
-    <div class="client-icon">🏭</div>
-    <div class="client-sector">Petroleum &amp; Gas</div>
-    <div class="client-name">Gujarat gas limited</div>
-    <p class="client-desc">Client description placeholder.</p>
-</div>
-<div class="client-card">
-    <div class="client-icon">🏭</div>
-    <div class="client-sector">Petroleum &amp; Gas</div>
-    <div class="client-name">TNGCL - tripura natural gas company limited</div>
-    <p class="client-desc">Client description placeholder.</p>
-</div>
-<div class="client-card">
-    <div class="client-icon">🏭</div>
-    <div class="client-sector">Petroleum &amp; Gas</div>
-    <div class="client-name">PETRONET LNG limited</div>
-    <p class="client-desc">Client description placeholder.</p>
-</div>
-<div class="client-card">
-    <div class="client-icon">🏭</div>
-    <div class="client-sector">Petroleum &amp; Gas</div>
-    <div class="client-name">Talcher fertilisers limited</div>
-    <p class="client-desc">Client description placeholder.</p>
-</div>
-<div class="client-card">
-    <div class="client-icon">🏭</div>
-    <div class="client-sector">Petroleum &amp; Gas</div>
-    <div class="client-name">RSGL - rasthan state gas limited</div>
-    <p class="client-desc">Client description placeholder.</p>
-</div>
-</div>
+
+    <!-- NFC -->
+    <div class="client-card">
+      <div class="client-logo-box" style="background:#fff8e1;border:1.5px solid #ffe082;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#ff8f00"/>
+          <circle cx="50" cy="50" r="30" fill="#ffffff"/>
+          <circle cx="50" cy="50" r="12" fill="#ff8f00"/>
+          <text x="50" y="91" font-family="Arial,sans-serif" font-weight="900" font-size="14" fill="#ffffff" text-anchor="middle">NFC</text>
+        </svg>
+      </div>
+      <div class="client-sector">Central Government</div>
+      <div class="client-name">NFC – Nuclear Fuel Complex</div>
+      <p class="client-desc">Industrial unit under Department of Atomic Energy. Dedicated transport and logistics support for high-security facilities.</p>
+    </div>
+
+    <!-- VADODARA GAS -->
+    <div class="client-card">
+      <div class="client-logo-box" style="background:#e1f5fe;border:1.5px solid #81d4fa;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#0277bd"/>
+          <path d="M30 25 L50 75 L70 25 Z" fill="#ffb300"/>
+          <text x="50" y="52" font-family="Arial,sans-serif" font-weight="900" font-size="14" fill="#ffffff" text-anchor="middle">VGL</text>
+        </svg>
+      </div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">Vadodara Gas Limited</div>
+      <p class="client-desc">Joint venture city gas distribution enterprise. Fleet deployment for CNG and PNG operational coverage.</p>
+    </div>
+
+    <!-- GUJARAT GAS -->
+    <div class="client-card">
+      <div class="client-logo-box" style="background:#f3e5f5;border:1.5px solid #e1bee7;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#4a148c"/>
+          <path d="M50 18 C32 38 25 52 25 66 C25 80 36 86 50 86 C64 86 75 80 75 66 C75 52 68 38 50 18 Z" fill="#00e676"/>
+          <text x="50" y="68" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#ffffff" text-anchor="middle">GGL</text>
+        </svg>
+      </div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">Gujarat Gas Limited</div>
+      <p class="client-desc">India's largest city gas distribution company. Fleet management and manpower support across Gujarat regions.</p>
+    </div>
+
+    <!-- TRIPURA NATURAL GAS -->
+    <div class="client-card">
+      <div class="client-logo-box" style="background:#e8f5e9;border:1.5px solid #a5d6a7;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#1b5e20"/>
+          <path d="M50 15 C35 35 28 48 28 62 C28 75 38 82 50 82 C62 82 72 75 72 62 C72 48 65 35 50 15 Z" fill="#ff9800"/>
+          <text x="50" y="65" font-family="Arial,sans-serif" font-weight="900" font-size="11" fill="#ffffff" text-anchor="middle">TNGCL</text>
+        </svg>
+      </div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">Tripura Natural gas Company Limited</div>
+      <p class="client-desc">Joint venture for city gas distribution across Tripura. Fleet deployment and driver management for CNG and PNG infrastructure.</p>
+    </div>
+
+    <!-- PETRONET LNG -->
+    <div class="client-card">
+      <div class="client-logo-box" style="background:#e8eaf6;border:1.5px solid #c5cae9;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#1a237e"/>
+          <path d="M50 20 C35 40 30 50 30 65 C30 78 40 82 50 82 C60 82 70 78 70 65 C70 50 65 40 50 20 Z" fill="#ff3d00"/>
+          <text x="50" y="64" font-family="Arial,sans-serif" font-weight="900" font-size="11" fill="#ffffff" text-anchor="middle">LNG</text>
+        </svg>
+      </div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">PETRONET LNG Limited</div>
+      <p class="client-desc">India's flagship LNG company. Passenger transportation and operational vehicle logistics for terminal operations.</p>
+    </div>
+
+    <!-- TALCHER FERTILIZERS -->
+    <div class="client-card">
+      <div class="client-logo-box" style="background:#f1f8e9;border:1.5px solid #c5e1a5;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#33691e"/>
+          <circle cx="50" cy="50" r="30" fill="#8bc34a"/>
+          <text x="50" y="56" font-family="Arial,sans-serif" font-weight="900" font-size="14" fill="#ffffff" text-anchor="middle">TFL</text>
+        </svg>
+      </div>
+      <div class="client-sector">PSU &amp; Industry</div>
+      <div class="client-name">Talcher Fertilizers Limited</div>
+      <p class="client-desc">First coal gasification-based fertilizer plant in India. Transport services supporting project execution and workforce mobility.</p>
+    </div>
+
+    <!-- RAJASTHAN STATE GAS -->
+    <div class="client-card">
+      <div class="client-logo-box" style="background:#fff8e1;border:1.5px solid #ffe082;">
+        <svg viewBox="0 0 100 100" width="44" height="44">
+          <rect width="100" height="100" rx="16" fill="#f57f17"/>
+          <path d="M50 18 C35 38 26 50 26 64 C26 78 36 84 50 84 C64 84 74 78 74 64 C74 50 65 38 50 18 Z" fill="#0277bd"/>
+          <text x="50" y="65" font-family="Arial,sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle">RSGL</text>
+        </svg>
+      </div>
+      <div class="client-sector">Petroleum &amp; Gas</div>
+      <div class="client-name">Rajasthan State Gas Limited</div>
+      <p class="client-desc">Joint venture promoting clean energy and CNG/PNG distribution across Rajasthan. Partnered for fleet and operational transport solutions.</p>
+    </div>
+  </div>
 </section>
 
 <!-- COVERAGE -->

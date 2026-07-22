@@ -8,66 +8,116 @@
 <link rel="stylesheet" href="styles.css"/>
 <link rel="stylesheet" href="animations.css"/>
 <style>
-/* HERO */
+/* HERO — compact, image-first showcase */
 .hero {
-  min-height: 100vh;
-  background: #060f24;
-  display: flex; align-items: center;
-  position: relative; overflow: hidden;
-  padding: 120px 5% 80px;
+  position: relative;
+  overflow: hidden;
+  background: #0b1628;
+  padding: 0;
 }
-/* Layer 1: deep navy gradient overlay */
-.hero::after {
-  content:''; position:absolute; inset:0; z-index:0;
-  background: linear-gradient(135deg,
+/* HD image — rendered at native resolution, no upscale blur */
+.hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: contrast(1.05) saturate(1.05) brightness(1.02);
+  transform: translateZ(0);
+}
+/* Bottom overlay — subtle gradient for buttons & stats readability */
+.hero-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 2;
+  padding: 24px 5% 22px;
+  background: linear-gradient(
+    to top,
     rgba(6,15,36,0.88) 0%,
-    rgba(10,31,68,0.72) 50%,
-    rgba(17,34,85,0.82) 100%);
-  pointer-events:none;
+    rgba(6,15,36,0.55) 50%,
+    transparent 100%);
 }
-/* Layer 0: animated Ken Burns background image */
-.hero-bg {
-  position: absolute; inset: -10%; z-index: 0;
-  background: url('images/hero_banner.png') center/cover no-repeat;
-  /* Animation handled by JS below — no CSS animation */
-  will-change: transform, filter;
-  filter: blur(1px) brightness(0.55) saturate(1.2);
-  transform-origin: center center;
+/* Content inside overlay */
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
-.hero-glow {
-  position: absolute; z-index: 0; pointer-events: none;
-  width: 700px; height: 700px;
-  background: radial-gradient(ellipse at center,
-    rgba(0,168,107,0.18) 0%,
-    rgba(0,168,107,0.06) 40%,
-    transparent 70%);
-  top: -10%; left: 20%;
-  will-change: transform;
+.hero-btns {
+  display:flex; gap:12px; flex-wrap:wrap;
 }
-.hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:2; width:100%; max-width:1300px; margin:auto; }
-.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(0,168,107,0.15); border:1px solid rgba(0,168,107,0.3); color:#00c97f; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:7px 18px; border-radius:50px; margin-bottom:20px; }
-.hero-badge .dot { width:8px;height:8px;background:#00a86b;border-radius:50%; animation:pulse-green 2s infinite; }
-.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(34px,5vw,62px); font-weight:800; color:white; line-height:1.1; margin-bottom:22px; }
-.hero h1 span { color:#00c97f; }
-.hero-desc { font-size:17px; color:rgba(255,255,255,0.72); line-height:1.75; margin-bottom:36px; max-width:520px; }
-.hero-btns { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:50px; }
-.hero-stats { display:flex; gap:24px; flex-wrap:nowrap; align-items:center; }
-.hero-stat { text-align:center; flex-shrink:0; }
-.hero-stat .num { font-size:28px; font-weight:900; color:white; line-height:1; white-space:nowrap; }
-.hero-stat .num span { color:#00c97f; }
-.hero-stat .lbl { font-size:11px; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:1px; margin-top:4px; white-space:nowrap; }
-.hero-divider { width:1px; background:rgba(255,255,255,0.15); height:50px; align-self:center; flex-shrink:0; }
-.hero-img-wrap { position:relative; display:flex; align-items:center; justify-content:center; }
-.hero-img-wrap img { width:100%; max-width:550px; border-radius:20px; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
-.hero-img-badge {
-  position:absolute; bottom:-20px; left:-20px;
-  background:white; border-radius:14px; padding:16px 22px;
-  display:flex; align-items:center; gap:12px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.2);
+/* Both buttons transparent */
+.hero .btn-outline {
+  background: rgba(255,255,255,0.10);
+  border: 1.5px solid rgba(255,255,255,0.45);
+  color: white;
+  backdrop-filter: blur(8px);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-flex; align-items: center; gap: 8px;
 }
-.hero-img-badge .badge-icon { width:44px;height:44px; background:linear-gradient(135deg,#00a86b,#007a4d); border-radius:10px; display:flex;align-items:center;justify-content:center; font-size:22px; }
-.hero-img-badge .badge-text strong { display:block; font-size:18px; font-weight:900; color:#0a1f44; }
-.hero-img-badge .badge-text span { font-size:11px; color:#475569; font-weight:500; }
+.hero .btn-outline:hover {
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.85);
+  transform: translateY(-2px);
+}
+.hero .btn-primary-glass {
+  background: linear-gradient(135deg, rgba(0,168,107,0.85), rgba(0,122,77,0.90));
+  border: 1.5px solid rgba(0,201,127,0.50);
+  color: white;
+  backdrop-filter: blur(8px);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(0,168,107,0.3);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.hero .btn-primary-glass:hover {
+  background: linear-gradient(135deg, rgba(0,168,107,1), rgba(0,122,77,1));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,168,107,0.45);
+}
+/* Stats bar — small, aligned right */
+.hero-stats-bar {
+  display:flex; gap:0; align-items:stretch;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  backdrop-filter: blur(8px);
+}
+.hero-stat-item {
+  padding: 12px 18px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.10);
+}
+.hero-stat-item:last-child { border-right: none; }
+.hero-stat-item .num {
+  font-size: 18px; font-weight: 800; color: white; line-height: 1;
+  white-space: nowrap;
+}
+.hero-stat-item .num em {
+  color: #c9a84c; font-style: normal;
+}
+.hero-stat-item .lbl {
+  font-size: 9px; color: rgba(255,255,255,0.50);
+  text-transform: uppercase; letter-spacing: 0.8px;
+  margin-top: 3px; white-space: nowrap;
+}
 
 /* ABOUT STRIP */
 .about-strip { background:#f8fafc; padding:70px 5%; }
@@ -111,8 +161,48 @@
 .why-item .wi-icon { width:50px;height:50px; background:linear-gradient(135deg,#00a86b,#007a4d); border-radius:12px; display:flex;align-items:center;justify-content:center; font-size:22px; flex-shrink:0; }
 .why-item h4 { font-size:16px; font-weight:700; color:#0a1f44; margin-bottom:5px; }
 .why-item p { font-size:14px; color:#475569; line-height:1.6; }
-.why-img { border-radius:20px; overflow:hidden; box-shadow:0 20px 60px rgba(10,31,68,0.15); }
-.why-img img { width:100%; height:100%; object-fit:cover; }
+.why-img-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(10,31,68,0.16);
+  border: 1px solid #e2e8f0;
+  background: white;
+}
+.why-fleet-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.why-fleet-legend {
+  background: linear-gradient(135deg, #0a1f44, #1a3366);
+  padding: 18px 22px;
+  color: white;
+}
+.why-fleet-legend .legend-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #00c97f;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.legend-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.lchip {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: white;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
 
 /* AWARD BANNER */
 .award-banner { background:linear-gradient(135deg,#00a86b,#007a4d); padding:50px 5%; text-align:center; }
@@ -133,12 +223,12 @@
 .cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
 
 @media(max-width:900px){
-  .hero-grid,.about-strip-grid,.why-grid{grid-template-columns:1fr;}
+  .about-strip-grid,.why-grid{grid-template-columns:1fr;}
   .services-grid{grid-template-columns:1fr 1fr;}
   .stats-big-grid{grid-template-columns:repeat(2,1fr);}
-  .hero-img-wrap{display:none;}
-  .hero{padding:100px 5% 60px;min-height:auto;}
-  .hero h1{font-size:clamp(32px,7vw,52px);}
+  .hero-content{flex-direction:column;align-items:flex-start;}
+  .hero-stats-bar{width:100%;}
+  .hero-stat-item{flex:1;}
 }
 @media(max-width:768px){
   .about-strip-grid{grid-template-columns:1fr;}
@@ -146,20 +236,22 @@
   .why-grid{grid-template-columns:1fr;}
   .award-banner{padding:40px 5%;}
   .hero-btns{flex-direction:column;align-items:flex-start;gap:10px;}
-  .hero-btns .btn{width:100%;justify-content:center;}
+  .hero-btns .btn{width:100%;justify-content:center;max-width:280px;}
+  .hero-overlay{padding:30px 5% 20px;}
+  .hero-stat-item{padding:8px 10px;}
+  .hero-stat-item .num{font-size:15px;}
+  .hero-stat-item .lbl{font-size:8px;}
 }
 @media(max-width:600px){
   .services-grid{grid-template-columns:1fr;}
   .stats-big-grid{grid-template-columns:1fr 1fr;}
-  .hero-stats{gap:8px;overflow-x:auto;}
-  .hero-stat .num{font-size:18px;}
-  .hero-stat .lbl{font-size:9px;letter-spacing:0.5px;}
-  .hero-divider{height:32px;}
+  .hero-btns .btn{font-size:13px;padding:10px 18px;}
   .cta-btns{flex-direction:column;align-items:center;}
   .cta-btns .btn{width:100%;justify-content:center;max-width:300px;}
   .clients-logos{gap:8px;}
   .client-chip{font-size:12px;padding:8px 14px;}
 }
+
 </style>
 </head>
 <body>
@@ -189,46 +281,39 @@
 
 <!-- HERO -->
 <section class="hero">
-  <!-- Animated background layers -->
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-grid">
-    <div>
-      <div class="hero-badge"><span class="dot"></span>Trusted Since 2009 &nbsp;|&nbsp; PAN India</div>
-      <h1>India's Premier<br/><span>Transportation &amp;</span><br/>Logistics Partner</h1>
-      <p class="hero-desc">From luxury passenger vehicles to emergency services and specialized manpower — Vajreshwari Enterprises delivers end-to-end mobility solutions across India with unmatched reliability.</p>
+  <img src="images/hero_fleet_4k.png" alt="Vajreshwari Enterprises – Complete Fleet Showcase" class="hero-img"/>
+  <div class="hero-overlay">
+    <div class="hero-content">
       <div class="hero-btns">
-        <a href="services.html" class="btn btn-primary">&#9658; Explore Services</a>
+        <a href="services.html" class="btn btn-outline">&#9658; Explore Services</a>
         <a href="contact.html" class="btn btn-outline">Get a Quote &rarr;</a>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="num">600<span>+</span></div><div class="lbl">Active Vehicles</div></div>
-        <div class="hero-divider"></div>
-        <div class="hero-stat"><div class="num">1200<span>+</span></div><div class="lbl">Drivers Employed</div></div>
-        <div class="hero-divider"></div>
-        <div class="hero-stat"><div class="num">332<span>Cr+</span></div><div class="lbl">Work Order Value</div></div>
-        <div class="hero-divider"></div>
-        <div class="hero-stat"><div class="num">28<span>+</span></div><div class="lbl">States Covered</div></div>
-      </div>
-    </div>
-    <div class="hero-img-wrap">
-      <img src="images/hero_banner.png" alt="Vajreshwari Enterprise Fleet"/>
-      <div class="hero-img-badge">
-        <div class="badge-icon">🏆</div>
-        <div class="badge-text">
-          <strong>Best Entrepreneur</strong>
-          <span>GEM Portal — PAN India Award</span>
+      <div class="hero-stats-bar">
+        <div class="hero-stat-item">
+          <div class="num">600<em>+</em></div>
+          <div class="lbl">Vehicles</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="num">1200<em>+</em></div>
+          <div class="lbl">Drivers</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="num">332<em>Cr</em></div>
+          <div class="lbl">Work Orders</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="num">28<em>+</em></div>
+          <div class="lbl">States</div>
         </div>
       </div>
     </div>
   </div>
-
 </section>
 
 <!-- ABOUT STRIP -->
 <section class="about-strip">
   <div class="about-strip-grid">
-    <img src="images/leader_portrait.png" alt="Sneh Gupta – Director"/>
+    <img src="images/sneh_gupta_office.png" alt="Ms. Sneh Gupta – Director, Vajreshwari Enterprises" style="max-height:440px;object-fit:cover;object-position:center top;border-radius:18px;box-shadow:0 16px 45px rgba(10,31,68,0.15);"/>
     <div>
       <div class="sister-tag">🤝 Two Sister Concern Companies</div>
       <div class="section-tag">Company Overview</div>
@@ -294,6 +379,7 @@
   </div>
 </section>
 
+
 <!-- WHY US -->
 <section class="why-us">
   <div class="why-grid">
@@ -333,7 +419,21 @@
       </div>
     </div>
     <div class="why-img">
-      <img src="images/services_fleet.png" alt="Our Fleet" style="border-radius:20px;"/>
+      <div class="why-img-card">
+        <img src="images/why_us_fleet.png" alt="Vajreshwari Commercial &amp; Emergency Fleet Lineup" class="why-fleet-img"/>
+        <div class="why-fleet-legend">
+          <div class="legend-title">🚘 Our Core Vehicle Fleet</div>
+          <div class="legend-chips">
+            <span class="lchip">Toyota Innova Crysta</span>
+            <span class="lchip">Mahindra Bolero</span>
+            <span class="lchip">Mahindra Scorpio</span>
+            <span class="lchip">Tempo Traveller</span>
+            <span class="lchip">Luxury Tourist Buses</span>
+            <span class="lchip">Emergency Ambulances</span>
+            <span class="lchip">CNG Cascade LCV</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -361,7 +461,7 @@
     <div class="client-chip">NPCIL</div>
     <div class="client-chip">Green Gas Ltd</div>
     <div class="client-chip">Torrent Gas Pvt Ltd</div>
-    <div class="client-chip">RSGL</div>
+    <div class="client-chip">Rajasthan State Gas Ltd</div>
     <div class="client-chip">Indraprastha Gas Grid Ltd</div>
     <div class="client-chip">IOAGPL</div>
     <div class="client-chip">Nagar Nigam</div>
@@ -435,42 +535,6 @@
 </div>
 <script>window.addEventListener("scroll",function(){document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);});var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.12});document.querySelectorAll(".reveal,.reveal-left,.reveal-right").forEach(function(el){obs.observe(el);});</script>
 <script src="main.js"></script>
-<script>
-// Liquid hero background — sine/cosine Lissajous drift
-// Completely forward-only: t always increases, never reverses
-(function () {
-  var bg   = document.querySelector('.hero-bg');
-  var glow = document.querySelector('.hero-glow');
-  if (!bg) return;
 
-  var t = 0;
-
-  function tick() {
-    // 0.0025 per frame @ 60fps = ~150s per full cycle — clearly visible but very smooth
-    t += 0.0025;
-
-    // X uses sin with one frequency, Y uses cos with a different frequency
-    // Different frequencies = Lissajous curve = never retraces the same path
-    var x = Math.sin(t * 1.1) * 22;          // drift left/right  ±22px
-    var y = Math.cos(t * 0.7) * 14;          // drift up/down     ±14px
-    var s = 1.08 + Math.sin(t * 0.4) * 0.05; // scale  1.03–1.13
-    var b = 0.55 + Math.sin(t * 0.3) * 0.03; // brightness 0.52–0.58
-
-    bg.style.transform = 'scale(' + s.toFixed(4) + ') translate(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px)';
-    bg.style.filter    = 'blur(1px) brightness(' + b.toFixed(3) + ') saturate(1.2)';
-
-    // Glow blob drifts with slightly different frequencies
-    if (glow) {
-      var gx = Math.sin(t * 0.5) * 70;
-      var gy = Math.cos(t * 0.8) * 45;
-      glow.style.transform = 'translate(' + gx.toFixed(2) + 'px,' + gy.toFixed(2) + 'px)';
-    }
-
-    requestAnimationFrame(tick);
-  }
-
-  requestAnimationFrame(tick);
-})();
-</script>
 </body>
 </html>
