@@ -44,6 +44,13 @@ html, body {
 }
 
 /* Force light mode globally — completely blocking browser auto-dark mode or OS color inversion */
+:root, html, body {
+  color-scheme: light !important;
+  supported-color-schemes: light !important;
+  forced-color-adjust: none !important;
+  -webkit-text-size-adjust: 100%;
+}
+
 @media (prefers-color-scheme: dark) {
   :root, html, body {
     color-scheme: light !important;
@@ -53,7 +60,7 @@ html, body {
   .page-wrapper, section, .why-us, .about-strip, .services-preview, .client-cats, .coverage-section, .contact-main {
     background-color: #ffffff !important;
   }
-  .svc-card, .client-card, .info-card, .value-card, .contact-form-wrap, .why-item, .journey-card, .ach-card, .stat-big, .wc-card {
+  .svc-card, .client-card, .info-card, .value-card, .contact-form-wrap, .why-item, .journey-card, .ach-card, .wc-card {
     background-color: #ffffff !important;
     color: #0a1f44 !important;
     border-color: #e2e8f0 !important;
@@ -67,6 +74,19 @@ html, body {
   .section-title span, .logo-sub, .highlight-green {
     color: #00a86b !important;
   }
+}
+
+/* Dark section safeguards against browser auto-inversion */
+.stats-section, .cta-section, .hero, .about-hero, .contact-hero, .svc-hero {
+  background: #060f24 !important;
+  color: #ffffff !important;
+}
+.stats-section .section-title, .cta-section h2, .about-hero h1, .contact-hero h1, .svc-hero h1 {
+  color: #ffffff !important;
+}
+.stat-big {
+  background: #0c2147 !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
 }
 
 /* ===== NAVBAR ===== */
