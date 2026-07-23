@@ -243,6 +243,14 @@ section { padding: 90px 5%; }
   content: ''; position: absolute; inset: 0;
   background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
+
+/* ===== 4K HERO IMAGE ENHANCEMENT ===== */
+.hero-img, .about-hero-img, .svc-hero-img, .contact-hero-img, .clients-map-img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: contrast(1.05) saturate(1.05) brightness(1.02);
+  transform: translateZ(0);
+}
 .page-hero-content { position: relative; z-index: 1; }
 .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 58px); font-weight: 800; color: white; margin-bottom: 16px; }
 .page-hero h1 span { color: var(--green-light); }
