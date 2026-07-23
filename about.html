@@ -98,9 +98,8 @@
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  overflow-x: auto;
-  padding-bottom: 24px;
-  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  overflow: hidden;
 }
 
 /* The 5-column grid for cards + circles */
@@ -108,10 +107,11 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto 80px auto;
-  gap: 0 24px;
+  gap: 0 16px;
   position: relative;
   align-items: end;
-  min-width: 1000px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Top row cards: columns 1, 3, 5 */
@@ -325,8 +325,69 @@
   .journey-card .jc-title {
     font-size: 16px;
   }
-  .journey-card .jc-desc {
-    font-size: 12.5px;
+}
+
+@media (max-width: 900px) {
+  .journey-timeline {
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+  }
+  .journey-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    padding-left: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+  }
+  .journey-grid::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    background: linear-gradient(to bottom, #00a86b 0%, #007a4d 50%, #0a1f44 100%);
+    border-radius: 3px;
+  }
+  .journey-circles-row {
+    display: none;
+  }
+  .journey-card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    border-left: 4px solid #00a86b;
+    padding: 20px 18px;
+    box-shadow: 0 4px 16px rgba(10,31,68,0.06);
+  }
+  .jc-top-1 { order: 1; }
+  .jc-bottom-2 { order: 2; }
+  .jc-top-3 { order: 3; }
+  .jc-bottom-4 { order: 4; }
+  .jc-top-5 { order: 5; }
+
+  .jc-top-1::after, .jc-top-3::after, .jc-top-5::after,
+  .jc-bottom-2::before, .jc-bottom-4::before {
+    display: none;
+  }
+
+  .journey-card .jc-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00a86b, #007a4d);
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 10px;
   }
 }
 
@@ -675,9 +736,8 @@
         <p class="jc-desc">M/s RC Gupta established, executing first transport contracts. Secured initial trust with giants like NPCIL and GAIL, delivering ₹4.5+ Cr with a basic fleet.</p>
       </div>
 
-      <!-- TOP CARD 3 (with New badge) -->
+      <!-- TOP CARD 3 -->
       <div class="journey-card jc-top-3 reveal">
-        <div class="jc-new-badge">New</div>
         <div class="jc-step-num">3</div>
         <div class="jc-date">2015 – 2019</div>
         <h3 class="jc-title">Scaling the Fleet</h3>
