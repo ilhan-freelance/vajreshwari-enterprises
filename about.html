@@ -98,6 +98,9 @@
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
+  overflow-x: auto;
+  padding-bottom: 24px;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* The 5-column grid for cards + circles */
@@ -108,6 +111,7 @@
   gap: 0 24px;
   position: relative;
   align-items: end;
+  min-width: 1000px;
 }
 
 /* Top row cards: columns 1, 3, 5 */
@@ -326,60 +330,7 @@
   }
 }
 
-@media (max-width: 900px) {
-  .journey-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    align-items: center;
-  }
-  .journey-circles-row {
-    display: none;
-  }
-  .journey-card {
-    width: 100%;
-    max-width: 520px;
-    margin-bottom: 24px;
-    order: unset;
-  }
-  /* Re-order for mobile: 1,2,3,4,5 */
-  .jc-top-1 { order: 1; }
-  .jc-bottom-2 { order: 2; }
-  .jc-top-3 { order: 3; }
-  .jc-bottom-4 { order: 4; }
-  .jc-top-5 { order: 5; }
 
-  /* Remove connector lines on mobile */
-  .jc-top-1::after, .jc-top-3::after, .jc-top-5::after,
-  .jc-bottom-2::before, .jc-bottom-4::before {
-    display: none;
-  }
-
-  /* Add left border accent strip + step number on mobile */
-  .journey-card {
-    border-left: 4px solid #00a86b;
-    padding-left: 28px;
-  }
-  .journey-card .jc-step-num {
-    display: flex;
-  }
-}
-
-/* Mobile step number circle (hidden on desktop) */
-.journey-card .jc-step-num {
-  display: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #00a86b, #007a4d);
-  color: white;
-  font-size: 14px;
-  font-weight: 800;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-  flex-shrink: 0;
-}
 
 @media (max-width: 600px) {
   .journey-section {
