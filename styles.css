@@ -57,7 +57,7 @@ html, body {
     background-color: #ffffff !important;
     color: #0a1f44 !important;
   }
-  .page-wrapper, section, .why-us, .about-strip, .services-preview, .client-cats, .coverage-section, .contact-main {
+  .page-wrapper, .why-us, .about-strip, .services-preview, .client-cats, .coverage-section, .contact-main {
     background-color: #ffffff !important;
   }
   .svc-card, .client-card, .info-card, .value-card, .contact-form-wrap, .why-item, .journey-card, .ach-card, .wc-card {
@@ -79,7 +79,8 @@ html, body {
 
 /* Dark section & card safeguards — guarantees brilliant readable text regardless of theme/browser */
 .stats-section, .cta-section, .hero, .about-hero, .contact-hero, .svc-hero, .clients-hero, .page-hero, .svc-cat-visual, .director-card, .map-embed, .award-banner, .how-section {
-  background-color: #060f24;
+  background-color: #060f24 !important;
+  background: #060f24 !important;
   color: #ffffff !important;
 }
 .stats-section *, .cta-section *, .hero *, .about-hero *, .contact-hero *, .svc-hero *, .clients-hero *, .page-hero *, .svc-cat-visual *, .director-card *, .map-embed *, .award-banner *, .how-section * {

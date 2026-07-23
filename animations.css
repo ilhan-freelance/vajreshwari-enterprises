@@ -207,7 +207,6 @@
   .road-scene { height: 100px; }
   .vehicle { font-size: 22px !important; bottom: 8px; }
   .cloud { display: none; }
-  .hero { padding-bottom: 120px !important; }
   .hero-stats { gap: 16px; }
   .hero-divider { height: 35px; }
   .hero-stat .num { font-size: 22px; }
