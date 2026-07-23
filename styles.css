@@ -60,7 +60,7 @@ html, body {
   .page-wrapper, .why-us, .about-strip, .services-preview, .client-cats, .coverage-section, .contact-main {
     background-color: #ffffff !important;
   }
-  .svc-card, .client-card, .info-card, .value-card, .contact-form-wrap, .why-item, .journey-card, .ach-card, .wc-card {
+  .svc-card, .client-card, .info-card, .value-card, .contact-form-wrap, .why-item, .journey-card, .wc-card {
     background-color: #ffffff !important;
     color: #0a1f44 !important;
     border-color: #e2e8f0 !important;
@@ -78,10 +78,37 @@ html, body {
 }
 
 /* Dark section & card safeguards — guarantees brilliant readable text regardless of theme/browser */
-.stats-section, .cta-section, .hero, .about-hero, .contact-hero, .svc-hero, .clients-hero, .page-hero, .svc-cat-visual, .director-card, .map-embed, .award-banner, .how-section {
+.stats-section, .cta-section, .hero, .about-hero, .contact-hero, .svc-hero, .clients-hero, .page-hero, .svc-cat-visual, .director-card, .map-embed, .award-banner, .how-section, .achievement-strip {
   background-color: #060f24 !important;
   background: #060f24 !important;
   color: #ffffff !important;
+}
+.stats-section *, .cta-section *, .hero *, .about-hero *, .contact-hero *, .svc-hero *, .clients-hero *, .page-hero *, .svc-cat-visual *, .director-card *, .map-embed *, .award-banner *, .how-section *, .achievement-strip * {
+  forced-color-adjust: none;
+}
+.stats-section .section-title, .cta-section h2, .about-hero h1, .contact-hero h1, .svc-hero h1, .clients-hero h1, .page-hero h1, .svc-cat-visual h3, .director-card h4, .director-card .name, .map-embed h3, .how-section h4, .ach-card h3 {
+  color: #ffffff !important;
+}
+.stats-section p, .cta-section p, .about-hero p, .contact-hero p, .svc-hero p, .clients-hero p, .page-hero p, .svc-cat-visual p, .map-embed p, .how-section p, .ach-card p {
+  color: rgba(255,255,255,0.85) !important;
+}
+.ach-card {
+  background: #0c2147 !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  color: #ffffff !important;
+}
+.ach-card h3 {
+  color: #ffffff !important;
+}
+.ach-card p {
+  color: rgba(255,255,255,0.85) !important;
+}
+.ach-card .sn-year-lbl {
+  font-size: 38px;
+  font-weight: 900;
+  color: #00c97f !important;
+  line-height: 1;
+  margin-bottom: 6px;
 }
 .stats-section *, .cta-section *, .hero *, .about-hero *, .contact-hero *, .svc-hero *, .clients-hero *, .page-hero *, .svc-cat-visual *, .director-card *, .map-embed *, .award-banner *, .how-section * {
   forced-color-adjust: none;
