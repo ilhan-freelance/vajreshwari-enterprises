@@ -119,13 +119,31 @@
 #toast{position:fixed;bottom:30px;right:30px;background:#00a86b;color:white;padding:14px 24px;border-radius:12px;font-size:14px;font-weight:600;transform:translateY(100px);opacity:0;transition:all 0.4s;z-index:9999;box-shadow:0 8px 30px rgba(0,168,107,0.4);}
 #toast.show{transform:translateY(0);opacity:1;}
 
+.info-card p, .info-card a, .director-card a, .director-card .name {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
 @media(max-width:900px){
-  .contact-layout{grid-template-columns:1fr;}
+  .contact-layout{grid-template-columns:1fr; gap:32px;}
   .why-contact-grid{grid-template-columns:1fr 1fr;}
   .form-row{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
-  .why-contact-grid{grid-template-columns:1fr;}
+  .contact-hero { padding: 90px 4% 36px; }
+  .contact-hero h1 { font-size: clamp(28px, 7vw, 42px); }
+  .contact-hero p { font-size: 14.5px; }
+  .contact-map-frame { margin-top: 20px; border-radius: 14px; }
+  .contact-map-frame img { height: 210px; }
+  .contact-main { padding: 40px 4%; }
+  .contact-form-wrap { padding: 20px 16px; border-radius: 16px; }
+  .contact-form-wrap h3 { font-size: 22px; }
+  .info-card { padding: 16px 14px; gap: 12px; border-radius: 14px; }
+  .director-card { padding: 20px 16px; border-radius: 14px; margin-bottom: 12px; }
+  .why-contact { padding: 45px 4%; }
+  .why-contact-grid { grid-template-columns: 1fr; }
+  .map-strip { padding: 45px 4%; }
+  .map-embed { height: 250px; border-radius: 14px; }
 }
 </style>
 </head>
@@ -155,7 +173,6 @@
 <!-- HERO -->
 <section class="contact-hero">
   <div class="contact-hero-content">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Contact Us</span></div>
     <div class="section-tag">24/7 Global Communications</div>
     <h1>Contact <span>Us</span></h1>
     <p>Round-the-clock support for fleet, emergency vehicles &amp; manpower services across India.</p>

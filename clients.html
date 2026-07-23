@@ -140,7 +140,15 @@
   .clients-big-grid,.coverage-layout,.ach-grid,.chart-layout{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
-  .clients-big-grid{grid-template-columns:1fr;}
+  .clients-hero { padding: 90px 4% 45px; }
+  .clients-hero h1 { font-size: clamp(28px, 7vw, 40px); }
+  .clients-hero-map-wrap { padding: 12px; border-radius: 14px; }
+  .clients-map-img { max-height: 220px; }
+  .cat-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+  .cat-tab { flex-shrink: 0; padding: 8px 16px; font-size: 13px; }
+  .client-cats, .coverage-section, .chart-section { padding: 50px 4%; }
+  .client-card { padding: 22px 18px; border-radius: 14px; }
+  .chart-wrap { padding: 20px 16px; border-radius: 14px; }
 }
 </style>
 </head>
@@ -165,7 +173,6 @@
 <section class="clients-hero">
   <div class="clients-hero-grid">
     <div class="clients-hero-content">
-      <div class="breadcrumb"><a href="index.html">Home</a> / <span>Clients &amp; Coverage</span></div>
       <div class="section-tag">PAN India Presence</div>
       <h1>Trusted Across <span>28+ States</span> &amp; UTs</h1>
       <p>From petroleum giants to nuclear research agencies — our client portfolio represents India's premier public sector enterprises and corporate conglomerates, powered by a 600+ fleet and 1200+ workforce.</p>
